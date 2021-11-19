@@ -1,0 +1,27 @@
+{
+  "name": "oppgave-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foxy773/tema-oppg4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/foxy773/tema-oppg4/issues"
+  },
+  "homepage": "https://github.com/foxy773/tema-oppg4#readme",
+  "dependencies": {
+    "vue": "^3.2.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.4",
+    "@vue/compiler-sfc": "^3.2.22",
+    "vite": "^2.6.14"
+  }
+}
