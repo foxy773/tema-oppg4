@@ -39,10 +39,7 @@ const questions = [
 ];
 console.log(questions);
 
-const giveQuestion = function () {
-  const answer = questions[0].answer;
-  const button = answer.forEach((element) => {});
-};
+const giveQuestion = function () {};
 
 giveQuestion();
 
