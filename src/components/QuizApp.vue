@@ -11,7 +11,7 @@
     </div>
   </section>
 
-  <audio controls autoplay hidden>
+  <audio controls autoplay hidden muted>
     <source src="./../../assets/music-kahoot.mp3" type="audio/mpeg" />
   </audio>
 </template>
