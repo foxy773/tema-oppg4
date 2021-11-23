@@ -1,1 +1,4 @@
-/*My name Jeff*/
+body {
+   background: var(--background);
+   font-family: var(--font-family);
+}

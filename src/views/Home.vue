@@ -18,10 +18,12 @@ export default {
 </script>
 
 <style>
-    .component-mount {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+   .component-mount {
+      height: 80vh;
+      padding: 5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
 </style>
