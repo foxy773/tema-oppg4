@@ -30,18 +30,18 @@ export default {
                 zipCode: null,
                 email: null,
                 message: null,
-                sizes: [],
+                order: [],
+                customVariation: {
+                    thisSize: null,
+                    thisTaste: null,
+                    thisVariation: null,
+                },
             },
             content: {
                 sizes: ['XS', 'S', 'M', 'L', 'XL', 'JUMBO', 'MANDINGO'],
-                balloonTastes: ['Neutral', 'Strawberry', 'Melon', 'Cola', 'Chocolate', 'Banana', 'Mango'],
-                balloonVariation: ['Extra sensitive', 'Ultra thin', 'Snug fit', 'Comfy fit', 'Ribbed & Dotted' ]
+                tastes: ['Neutral', 'Strawberry', 'Melon', 'Cola', 'Chocolate', 'Banana', 'Mango'],
+                variation: ['Extra sensitive', 'Ultra thin', 'Snug fit', 'Comfy fit', 'Ribbed & Dotted' ]
             },
-            customVariation: {
-                thisSize: null,
-                thisTaste: null,
-                thisVariation: null,
-            }
         }
     },
     methods: {
@@ -56,8 +56,8 @@ export default {
 <style>
 
     .contact-form {
-        width: 40vw;
-        height: 50vh;
+        width: 100%;
+        height: 100%vh;
         background: gray;
         display: flex;
         flex-direction: column;
