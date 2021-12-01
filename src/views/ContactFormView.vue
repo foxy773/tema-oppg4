@@ -1,7 +1,7 @@
 <template>
-
-   <ContactForm />
-
+   <div class="">
+      <ContactForm />
+   </div>
 </template>
 
 <script>
