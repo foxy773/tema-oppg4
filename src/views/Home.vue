@@ -1,8 +1,8 @@
 <template>
     <div class="component-mount">
         <div class="component-mount__contact-form"><ContactForm /></div>
-        <div class="component-mount__quiz-app"></div>
-        <div class="component-mount__slideshow">slideshow</div>
+        <div class="component-mount__quiz-app">Quiz-app</div>
+        <div class="component-mount__slideshow"><Slideshow /></div>
         <div class="component-mount__sortable-table">sortable table</div>
         <div class="component-mount__todo-list"><ToDo /></div>
     </div>
@@ -11,12 +11,14 @@
 <script>
     import ContactForm from '../components/ContactForm.vue';
     import QuizApp from '../components/QuizApp.vue';
-    import ToDo from '../components/ToDo.vue'
+    import Slideshow from '../components/Slideshow.vue';
+    import ToDo from '../components/ToDo.vue';
 
     export default {
         components: {
             ContactForm,
             QuizApp,
+            Slideshow,
             ToDo,
         }
     }
