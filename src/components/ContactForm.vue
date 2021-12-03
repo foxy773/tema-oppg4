@@ -1,20 +1,38 @@
 <template>
     <div class="contact-form">
-        <input class="contact-form__input" type="text" placeholder="Name" v-model="name">
-        <input class="contact-form__input" type="text" placeholder="Address" v-model="address">
+        <input class="contact-form__input" type="text" placeholder="Name" form="name" v-model="form.name">
+        <input class="contact-form__input" type="text" placeholder="Address" form="address" v-model="form.address">
         <div class="contact-form__under-element">
-            <input class="contact-form__input" type="text" placeholder="City" v-model="address">
-            <input class="contact-form__input" type="text" placeholder="Zip code" v-model="address">
+            <input class="contact-form__input" type="text" placeholder="City" form="city" v-model="form.city">
+            <input class="contact-form__input" type="text" placeholder="Zip code" v-model="form.zipCode">
         </div>
-        <input class="contact-form__input" type="email" placeholder="Email" v-model="email">
-        <textarea class="contact-form__input contact-form__input__description" cols="4" placeholder="Message" v-model="message"></textarea>
-        <div class="contact-form__under-element">
-            <label :for="`sizes-input-${index}`" v-for="(size, index) in content.sizes">
-			    <div>{{ size }}</div>
-			    <input :id="`sizes-input-${index}`" name="sizes" type="checkbox" v-model="form.sizes" :value="size" />
-		    </label>
+        <input class="contact-form__input" type="email" placeholder="Email" form="email" v-model="form.email">
+        <textarea class="contact-form__input contact-form__input__description" cols="4" placeholder="Message" v-model="form.message"></textarea>
+        <div class="">
+            <select v-model="form.customVariation.thisSize">
+                <option disabled value="Select variation">Select size</option>
+                <option v-for="sizes in content.sizes"> {{ sizes }} </option>
+            </select>
+            <select v-model="form.customVariation.thisTaste">
+                <option disabled value="Select variation">Select taste</option>
+                <option v-for="tastes in content.tastes"> {{ tastes }} </option>
+            </select>
+            <select v-model="form.customVariation.thisVariation">
+                <option disabled value="Select variation">Select variation</option>
+                <option v-for="variation in content.variation"> {{ variation }} </option>
+            </select>
+            <button class="" @click="push_order">Add order</button>
         </div>
-
+        <div class="">
+            <label v-for="(balloon, index) in order">
+                <div>
+                    <div> {{ balloon.thisSize }} </div>
+                    <div> {{ balloon.thisTaste }} </div>
+                    <div> {{ balloon.thisVariation }} </div>
+                    <button class="" @click="remove_order(index)">Remove</button>
+                </div>
+            </label>
+        </div>
         <button class="contact-form__button" @click="submit_order">Submit</button>
     </div>
 </template>
@@ -30,23 +48,31 @@ export default {
                 zipCode: null,
                 email: null,
                 message: null,
-                sizes: [],
+                customVariation: {
+                    thisSize: null,
+                    thisTaste: null,
+                    thisVariation: null,
+                },
             },
             content: {
                 sizes: ['XS', 'S', 'M', 'L', 'XL', 'JUMBO', 'MANDINGO'],
-                balloonTastes: ['Neutral', 'Strawberry', 'Melon', 'Cola', 'Chocolate', 'Banana', 'Mango'],
-                balloonVariation: ['Extra sensitive', 'Ultra thin', 'Snug fit', 'Comfy fit', 'Ribbed & Dotted' ]
+                tastes: ['Neutral', 'Strawberry', 'Melon', 'Cola', 'Chocolate', 'Banana', 'Mango'],
+                variation: ['Extra sensitive', 'Ultra thin', 'Snug fit', 'Comfy fit', 'Ribbed & Dotted' ]
             },
-            customVariation: {
-                thisSize: null,
-                thisTaste: null,
-                thisVariation: null,
-            }
+            order:[],
         }
     },
     methods: {
+        push_order() {
+            this.order.push({ ...this.form.customVariation })
+        },
+
+        remove_order(index) {
+            this.order.splice(index, 1);
+        },
+
         submit_order() {
-            alert(`Thank you, ${this.name}, for ordering with us at DongYourSlong.no. Your order will be delivered in a neutral packaging at your local postbox with your personal message displayed on the packaging. We hope you enjoy your product and hope to do more business in the future.`)
+            alert(`Thank you, ${this.form.name}, for ordering with us at DongYourSlong.no. Your order will be delivered in a neutral packaging at your local postbox with your personal message displayed on the packaging. We hope you enjoy your product and hope to do more business in the future.`)
         }
     }
 }
@@ -56,8 +82,8 @@ export default {
 <style>
 
     .contact-form {
-        width: 40vw;
-        height: 50vh;
+        width: 100%;
+        height: 100%vh;
         background: gray;
         display: flex;
         flex-direction: column;

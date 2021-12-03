@@ -1,10 +1,20 @@
 <template>
-    <QuizApp />
+    <Header />
+    <RouterView />
+    <Footer />
+  
 </template>
 
 <script>
-import ContactForm from "../components/ContactForm.vue"
-import QuizApp from "../components/QuizApp.vue"
+    import Header from '../components/Header.vue';
+    import Footer from '../components/Footer.vue';
+
+    export default {
+        components: {
+           Header,
+           Footer,
+        }
+    }
 
 export default {
     components: {
@@ -16,6 +26,7 @@ export default {
 
 <style>
     @import '../style/reset.css';
+    @import '../style/fonts.css';
     @import '../style/variables.css';
     @import '../style/style.css';
 </style>

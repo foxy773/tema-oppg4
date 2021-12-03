@@ -155,12 +155,9 @@ export default {
 
 
 <style>
-body {
+.quizContainer {
   background: rgb(41, 41, 41);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.quizContainer {
   display: flex;
   align-items: center;
   justify-content: center;
