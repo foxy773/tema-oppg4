@@ -18,7 +18,7 @@
   "homepage": "https://github.com/foxy773/tema-oppg4#readme",
   "dependencies": {
     "vue": "^3.2.22",
-    "vue-router": "^3.5.3"
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.4",

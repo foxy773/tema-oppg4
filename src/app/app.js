@@ -4,11 +4,11 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import routes from '../routes.js'
 
-const router = createRouter({
+const app_router = createRouter({
     routes: routes,
     history: createWebHistory()
 })
 
 createApp(App)
-    .use(router)
+    .use(app_router)
     .mount('#app');

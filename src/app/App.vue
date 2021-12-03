@@ -1,9 +1,17 @@
 <template>
-    
+    <QuizApp />
 </template>
 
 <script>
+import ContactForm from "../components/ContactForm.vue"
+import QuizApp from "../components/QuizApp.vue"
 
+export default {
+    components: {
+        ContactForm,
+        QuizApp
+    }
+}
 </script>
 
 <style>

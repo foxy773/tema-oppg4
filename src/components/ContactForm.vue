@@ -10,8 +10,8 @@
         <textarea class="contact-form__input contact-form__input__description" cols="4" placeholder="Message" v-model="message"></textarea>
         <div class="contact-form__under-element">
             <label :for="`sizes-input-${index}`" v-for="(size, index) in content.sizes">
-			<div>{{ size }}</div>
-			<input :id="`sizes-input-${index}`" name="sizes" type="checkbox" v-model="form.sizes" :value="size" />
+			    <div>{{ size }}</div>
+			    <input :id="`sizes-input-${index}`" name="sizes" type="checkbox" v-model="form.sizes" :value="size" />
 		    </label>
         </div>
 
