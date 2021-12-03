@@ -4,26 +4,28 @@
         <div class="component-mount__quiz-app"></div>
         <div class="component-mount__slideshow">slideshow</div>
         <div class="component-mount__sortable-table">sortable table</div>
-        <div class="component-mount__todo-list">to-do liste</div>
+        <div class="component-mount__todo-list"><ToDo /></div>
     </div>
 </template>
 
 <script>
-import ContactForm from '../components/ContactForm.vue';
-import QuizApp from '../components/QuizApp.vue';
+    import ContactForm from '../components/ContactForm.vue';
+    import QuizApp from '../components/QuizApp.vue';
+    import ToDo from '../components/ToDo.vue'
 
-export default {
-    components: {
-        ContactForm,
-        QuizApp,
+    export default {
+        components: {
+            ContactForm,
+            QuizApp,
+            ToDo,
+        }
     }
-}
 </script>
 
 <style>
    .component-mount {
         width: 100%;
-        height: 115%;
+        height: auto;
         padding: 2vw 5vw 2vw 5vw;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
