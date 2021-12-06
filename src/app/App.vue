@@ -15,13 +15,7 @@
            Footer,
         }
     }
-
-export default {
-    components: {
-        ContactForm,
-        QuizApp
-    }
-}
+    
 </script>
 
 <style>

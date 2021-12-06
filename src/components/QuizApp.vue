@@ -21,8 +21,13 @@
 
     <div class="quizContainer__results" v-else >
       <div v-for="(answer, index) in answered">
+<<<<<<< HEAD
       <img src="./../../assets/wrong.svg" alt="" v-if="answer.wrong">
       <img src="./../../assets/right.svg" alt="" v-else>
+=======
+      <img src="/assets/quiz-app/wrong.svg" alt="" v-if="answer.wrong">
+      <img src="/assets/quiz-app/right.svg" alt="" v-if="!answer.wrong">
+>>>>>>> cca012e606442c93749ef646cf7d3505fe8c3e8e
       <h3>{{ answer.answer }}</h3>
       </div>
       <button @click="resetQuiz()">Retry</button>
@@ -30,7 +35,7 @@
   </section>
 
   <audio controls muted hidden>
-    <source src="./../../assets/music-kahoot.mp3" type="audio/mpeg" />
+    <source src="/assets/quiz-app/music-kahoot.mp3" type="audio/mpeg" />
   </audio>
 </template>
 
