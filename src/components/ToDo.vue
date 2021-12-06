@@ -1,5 +1,6 @@
+
 <template>
-   <div class="todo">
+   <div class="todo" :data-layout="layout">
       <div class="todo__header">
          <div class="todo__title">Things_due</div>
       </div>
@@ -31,44 +32,78 @@
 </template>
 
 <script>
-export default {
-   data() {
-      return {
-         tasks: [
-            { id: this.id(), text: 'Pending Task', done: false }
-         ],
+   import ToDoItem from './ToDoItem.vue'
+
+   export default {
+      props: {
+         title: { type: String },
+         layout: { type: String }
+      },
+      
+      components: {
+         ToDoItem
+      },
+
+      data() {
+         return {
+            tasks: [],
+            showSeparateLists: true,
+         }
+      },
+
+      // 
+      created() {
+         const localState = this.returnTasksLocally();
+
+         if (localState) {
+            this.task = localState
+         }
+      },
+
+      computed: {
+
+         //Filtrerer alle "task" objekter med verdien false i ".done"til pending.
+         pendingTasks() {
+            return this.tasks.filter(task => task.done === false);
+         },
+
+         //Filtrerer alle "task" objekter med verdien true i ".done" til done.
+         doneTasks() {
+            return this.tasks.filter(task => task.done === true);
+         },
+      },
+
+      methods: {
+
+         // Lager og pusher "task" objekt inn i "tasks" listen & lagrer det som stringified JSON lokalt i nettleseren.
+         addTask() {
+            this.tasks.push({ id: this.id(), text: 'new task', done: false });
+            this.storeTasksLocally();
+         },
+
+         // Fjerner "task" objekt fra "tasks" listen & lagrer endringen som stringified JSON lokalt i nettleseren.
+         removeTask(id) {
+            const taskIndex = this.tasks.findIndex(task => task.id === id);
+            this.tasks.splice(taskIndex, 1);
+            this.storeTasksLocally();
+         },
+
+         // Lager en custom ID til hver "task" som andre funskjoner kan sikte på.
+         id() {
+            return Math.random().toString(36).slice(2);
+         },
+
+         // Etterfølger funksjoner og lagrer endringer som er gjort i form av Stringified JSON lokalt i nettleseren.
+         storeTasksLocally() {
+            window.localStorage.setItem('class', JSON.stringify(this.Tasks));
+         },
+
+         // Konverterer lagrede JSON elementer i det lokale minnet i nettleseren tilbake til aktiv kode.
+         returnTasksLocally() {
+            return JSON.parse(window.localStorage.getItem('class'))
+         }
       }
-   },
-   computed: {
-
-      pendingTasks() {
-         return this.tasks.filter(task => task.done === false);
-      },
-
-      doneTasks() {
-         return this.tasks.filter(task => task.done === true);
-      },
-   },
-   methods: {
-      addTask() {
-         this.tasks.push({ id: this.id(), text: 'new task', done: false });
-      },
-
-      removeTask(id) {
-         const taskIndex = this.tasks.findIndex(task => task.id === id);
-         this.tasks.splice(taskIndex, 1);
-      },
-
-      markAsDone(id) {
-			const taskIndex = this.tasks.findIndex(task => task.id === id)
-			this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
-      },
-
-      id() {
-			return Math.random().toString(36).slice(2);
-		},
    }
-}
 </script>
 
 <style>

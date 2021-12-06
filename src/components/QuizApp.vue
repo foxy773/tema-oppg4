@@ -21,15 +21,15 @@
 
     <div class="quizContainer__results" v-else >
       <div v-for="(answer, index) in answered">
-      <img src="./../../assets/wrong.svg" alt="" v-if="answer.wrong">
-      <img src="./../../assets/right.svg" alt="" v-if="!answer.wrong">
+      <img src="/assets/quiz-app/wrong.svg" alt="" v-if="answer.wrong">
+      <img src="/assets/quiz-app/right.svg" alt="" v-if="!answer.wrong">
       <h3>{{ answer.answer }}</h3>
       </div>
     </div>
   </section>
 
   <audio controls muted hidden>
-    <source src="./../../assets/music-kahoot.mp3" type="audio/mpeg" />
+    <source src="/assets/quiz-app/music-kahoot.mp3" type="audio/mpeg" />
   </audio>
 </template>
 
