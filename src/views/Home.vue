@@ -4,7 +4,7 @@
     <div class="component-mount__quiz-app"><QuizApp /></div>
     <div class="component-mount__slideshow"><Slideshow /></div>
     <div class="component-mount__sortable-table"><SortableTable /></div>
-    <!--<div class="component-mount__todo-list"><ToDo /></div>-->
+    <div class="component-mount__todo-list"><ToDo /></div>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import ContactForm from "../components/ContactForm.vue";
 import QuizApp from "../components/QuizApp.vue";
 import Slideshow from "../components/Slideshow.vue";
 import SortableTable from "../components/SortableTable.vue";
-// import ToDo from '../components/ToDo.vue';
+ import ToDo from '../components/ToDo.vue';
 
 export default {
   components: {
@@ -21,7 +21,7 @@ export default {
     QuizApp,
     Slideshow,
     SortableTable,
-    //ToDo,
+    ToDo,
   },
 };
 </script>
