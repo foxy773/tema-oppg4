@@ -1,6 +1,5 @@
 <template>
   <section class="quizContainer">
-
     <div class="quizContainer__status" v-if="!this.resultsTime">
       <h2>Questions: {{ questionIndex + 1 }}/{{ totalQuestions }}</h2>
     </div>
@@ -14,21 +13,21 @@
     </div>
 
     <div class="quizContainer__answers" v-if="!this.resultsTime">
-      <button class="answers__options" @click="nextQuestion(answer)" v-for="(answer, index) in currentQuestion.answers" :key="index">
+      <button
+        class="answers__options"
+        @click="nextQuestion(answer)"
+        v-for="(answer, index) in currentQuestion.answers"
+        :key="index"
+      >
         {{ answer.answer }}
       </button>
     </div>
 
-    <div class="quizContainer__results" v-else >
+    <div class="quizContainer__results" v-else>
       <div v-for="(answer, index) in answered">
-<<<<<<< HEAD
-      <img src="./../../assets/wrong.svg" alt="" v-if="answer.wrong">
-      <img src="./../../assets/right.svg" alt="" v-else>
-=======
-      <img src="/assets/quiz-app/wrong.svg" alt="" v-if="answer.wrong">
-      <img src="/assets/quiz-app/right.svg" alt="" v-if="!answer.wrong">
->>>>>>> cca012e606442c93749ef646cf7d3505fe8c3e8e
-      <h3>{{ answer.answer }}</h3>
+        <img src="./../../public/assets/quiz-app/wrong.svg" alt="" v-if="answer.wrong" />
+        <img src="./../../public/assets/quiz-app/right.svg" alt="" v-else />
+        <h3>{{ answer.answer }}</h3>
       </div>
       <button @click="resetQuiz()">Retry</button>
     </div>
@@ -127,7 +126,7 @@ export default {
             { answer: "Leonardo da Vinci", wrong: true },
             { answer: "Vincent dan Gogh", wrong: true },
           ],
-        }
+        },
       ],
     };
   },
@@ -142,16 +141,16 @@ export default {
   },
   methods: {
     nextQuestion(answer) {
-      if ((this.questionIndex +1) < this.questions.length) {
+      if (this.questionIndex + 1 < this.questions.length) {
         this.questionIndex++;
         this.answered.push(answer);
         console.log(this.questions.length, "Total");
-        console.log(this.questionIndex, "Question number")
+        console.log(this.questionIndex, "Question number");
       } else {
         this.answered.push(answer);
         this.resultsTime = true;
         console.log("Done!");
-        console.log(this.answered)
+        console.log(this.answered);
       }
     },
     resetQuiz() {
@@ -167,7 +166,7 @@ export default {
 <style>
 .quizContainer {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 1.5rem;
   background: rgb(41, 41, 41);
   font-family: Arial, Helvetica, sans-serif;
@@ -175,7 +174,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 350px;
 }
 
 .quizContainer__question {
@@ -205,7 +203,7 @@ export default {
   overflow-y: scroll;
 }
 
-.quizContainer__results div{
+.quizContainer__results div {
   display: flex;
   align-items: center;
   background: white;

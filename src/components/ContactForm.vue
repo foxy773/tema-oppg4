@@ -83,7 +83,7 @@ export default {
 
     .contact-form {
         width: 100%;
-        height: 100%vh;
+        height: 100vh;
         background: gray;
         display: flex;
         flex-direction: column;
