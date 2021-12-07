@@ -3,6 +3,7 @@ import ContactFormView from './views/ContactFormView.vue';
 import SlideshowView from './views/SlideshowView.vue';
 import QuizAppView from "./views/QuizAppView.vue";
 import SortableTableView from "./views/SortableTableView.vue";
+import ToDoView from "./views/ToDoView.vue";
 
 export default [
     { name: 'home', path: '/', component: Home },
