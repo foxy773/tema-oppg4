@@ -1,21 +1,21 @@
 <template>
-	<table>
+<div class="tableContainer">
+	<input v-model="search" class="tableContainer__search" name="" id="" placeholder="Search for any of the keys above">
+
+	<table class="tableContainer__table">
 		<thead>
 			<tr>
-				<td><button @click="sort()">First Name</button></td>
-				<td><button @click="sort()">Last Name</button></td>
-				<td><button @click="sort()">Gender</button></td>
-				<td><button @click="sort()">Race</button></td>
-				<td><button @click="sort()">Job Title</button></td>
+				<th v-repeat:="column: columns">
+					<a href="#" @click="click: sortBy(column)" v-class="active: sortKey == column">
+						{{ column | capitalize }}
+					</a>
+
+				</th>
 			</tr>
 		</thead>
-
-		<tbody>
-			<tr v-for="row in sorted">
-				<td v-for="value in row">{{ value }}</td>
-			</tr>
-		</tbody>
 	</table>
+</div>
+	
 </template>
 
 <script>
@@ -25,10 +25,7 @@ const employees=`[{"first_name":"Thomasa","last_name":"Doberer","gender":"Bigend
 export default {
   data() {
     return {
-      sort: {
-		  key: "name",
-		  order: "asc",
-	  },
+	  content: JSON.parse(mockData),
     };
   },
 
@@ -37,9 +34,7 @@ export default {
     },
 
   methods: {
-    sort() {
-		 
-	 }
+    
 	}
 }
 </script>
