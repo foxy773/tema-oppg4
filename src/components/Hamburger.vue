@@ -12,13 +12,13 @@
 						  <li class="list__item">
 							  <a class="list__item__link" href="/quizapp">QuizApp</a></li>
                     <li class="list__item">
-							  <a class="list__item__link" href="/slideshow">Contact Form</a>
+							  <a class="list__item__link" href="/slideshow">slideshow</a>
 						  </li>
 						  <li class="list__item">
 							  <a class="list__item__link" href="/sortable-table">Sortable Table</a>
 							  </li>
 						  <li class="list__item">
-							  <a class="list__item__link" href="/">TodoApp</a>
+							  <a class="list__item__link" href="/to-do">TodoApp</a>
 							  </li>
                 </ul>
             </nav>

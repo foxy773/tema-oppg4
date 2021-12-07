@@ -9,5 +9,6 @@ export default [
     { name: 'contactForm', path: '/contact-form', component: ContactFormView },
     { name: 'slideshow', path: '/slideshow', component: SlideshowView },
     { name: 'quizApp', path: '/quizapp', component: QuizAppView },
-    { name: 'sortableTable', path: '/sortable-table', component: SortableTableView }
+    { name: 'sortableTable', path: '/sortable-table', component: SortableTableView },
+    { name: 'toDo', path: '/to-do', component: ToDoView }
 ]
