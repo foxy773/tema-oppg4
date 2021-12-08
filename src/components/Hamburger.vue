@@ -2,26 +2,13 @@
 	<div class="hamburger" @click="toggleMenu()">
 		<img class="hamburger__image" src="./../../public/assets/header/hamburger-menu.svg" alt="">
 		<nav :class='[menuOpen ? "open" : "close", "hamburger__menu"]'>
-                <ul class="hamburger__menu__list">
-                    <li class="list__item">
-							  <a class="list__item__link" href="/">Home</a>
-							  </li>
-                    <li class="list__item">
-							  <a class="list__item__link" href="/contact-form">Contact Form</a>
-							  </li>
-						  <li class="list__item">
-							  <a class="list__item__link" href="/quizapp">QuizApp</a></li>
-                    <li class="list__item">
-							  <a class="list__item__link" href="/slideshow">slideshow</a>
-						  </li>
-						  <li class="list__item">
-							  <a class="list__item__link" href="/sortable-table">Sortable Table</a>
-							  </li>
-						  <li class="list__item">
-							  <a class="list__item__link" href="/to-do">TodoApp</a>
-							  </li>
-                </ul>
-            </nav>
+        	<ul class="menu__list">
+
+                <li class="list__item" v-for="link in navigation">
+					<a class="item__link" :href="`${link.pageLink}`">{{ link.pageName }}</a>
+				</li>
+            </ul>	
+    	</nav>
 	</div>
 </template>
 
@@ -29,7 +16,8 @@
 export default {
 	data() {
 		return {
-			menuOpen: false
+			menuOpen: false,
+			navigation: [{ pageName: "Home", pageLink: "/" }, { pageName: "Contact Form", pageLink: "/contact-form" }, { pageName: "QuizApp", pageLink: "/quizapp" }, { pageName: "Slideshow", pageLink: "/slideshow" }, { pageName: "Sortable Table", pageLink: "/sortable-table" }, { pageName: "TodoApp", pageLink: "/to-do" }],
 		};
 	},
 	methods: {
@@ -51,7 +39,7 @@ export default {
 .hamburger__image {
 	display: flex;
 	align-self: center;
-	width: 50px;
+	width: 40px;
 	height: auto;
 	height: auto;
 	position: absolute;
@@ -71,7 +59,7 @@ export default {
 	left: -250px;
 }
 
-.hamburger__menu__list {
+.menu__list {
 	list-style: none;
 	text-align: center;
 }
@@ -81,7 +69,7 @@ export default {
 	font-size: 1.3rem;
 }
 
-.list__item__link {
+.item__link {
 	width: 100%;
 	text-decoration: none;
 	display: inline-block;
@@ -90,7 +78,7 @@ export default {
 	padding: 0.4rem 0;
 }
 
-.list__item__link:hover {
+.item__link:hover {
 	background: black;
 	color: white;
 	font-style: italic;

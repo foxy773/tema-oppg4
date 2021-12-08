@@ -1,7 +1,15 @@
 <template>
 	<div class="mainContainer">
-
-	
+		<div class="controlpanel">
+		<a @click="toggleSortOrder">Sort: {{ sort.key }} ({{ sort.order.toUpperCase() }})</a>
+		<div class="dropdown">
+			<h3>Filter: {{ sort.currentFilter }}</h3>
+		<ul class="dropdown__list">
+			<li class="dropdown__list__item" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
+			<img src="./../../public/assets/sortableTable/down-arrow.svg" alt="">
+		</ul>
+		</div>
+		</div>
 	<div class="tableContainer">
 		<table class="tableContainer__employeeTable">
 			<thead class="tableContainer__employeeTable__head">
@@ -16,17 +24,7 @@
 				</tr>
 			</tbody>
 		</table>
-		
 	</div>
-	<div class="controlpanel">
-		<a @click="toggleSortOrder">Sort: {{ sort.key }} ({{ sort.order.toUpperCase() }})</a>
-		<div class="dropdown">
-			<h3>Filter: {{ sort.currentFilter }}</h3>
-		<ul class="dropdown__list">
-			<li class="dropdown__list__item" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
-		</ul>
-		</div>
-		</div>
 	</div>
 </template>
 
@@ -113,7 +111,8 @@
 <style>
 	.mainContainer {
 		display: flex;
-		padding: 2%;
+		flex-direction: column;
+		padding: 10px;
 		height: 100%;
 		width: 100%;
 		overflow-y: scroll;
@@ -121,10 +120,9 @@
 
 	.tableContainer{
 		display: flex;
-		width: 90%;
+		width: 100%;
 		height: 100%;
 		justify-content: center;
-		padding: 0 2% 0 0;
 	}
 
 	.tableContainer__employeeTable {
@@ -170,7 +168,8 @@
 	}
 
 	.controlPanel {
-		width: 10%;
+		width: 100%;
+		padding: 0 0 20px 0;
 	}
 
 	.dropdown {
@@ -179,16 +178,24 @@
 	
 	.dropdown__list{
 		display: flex;
-		flex-direction: column;
+		align-items: center;
 		width: 100%;
 		list-style: none;
 		border-radius: 10px;
 		background: #f4f1de;
 	}
 
+	.dropdown__list img{
+		padding: 10px;
+		height: 40px;
+		width: auto;
+	}
+
 	.dropdown__list__item {
+		display: flex;
+		align-items: center;
 		width: 100%;
-		height: 100%;
+		height: auto;
 		text-align: center;
 		cursor: pointer;
 	}

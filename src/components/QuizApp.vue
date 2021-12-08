@@ -14,11 +14,7 @@
 
     <div class="quizContainer__answers" v-if="!this.resultsTime">
       <button
-        class="answers__options"
-        @click="nextQuestion(answer)"
-        v-for="(answer, index) in currentQuestion.answers"
-        :key="index"
-      >
+        class="answers__options" @click="nextQuestion(answer)" v-for="(answer, index) in currentQuestion.answers">
         {{ answer.answer }}
       </button>
     </div>
@@ -29,6 +25,7 @@
         <img src="./../../public/assets/quiz-app/right.svg" alt="" v-else />
         <h3>{{ answer.answer }}</h3>
       </div>
+      
       <button @click="resetQuiz()">Retry</button>
     </div>
   </section>
@@ -143,16 +140,13 @@ export default {
     nextQuestion(answer) {
       if (this.questionIndex + 1 < this.questions.length) {
         this.questionIndex++;
-        this.answered.push(answer);
-        console.log(this.questions.length, "Total");
-        console.log(this.questionIndex, "Question number");
       } else {
-        this.answered.push(answer);
         this.resultsTime = true;
-        console.log("Done!");
-        console.log(this.answered);
       }
+      
+      this.answered.push(answer);
     },
+    
     resetQuiz() {
       this.questionIndex = 0;
       this.answered = [];

@@ -5,11 +5,14 @@
             <img class="slideshow__img" :src="currentImage.src" :alt="currentImage.name">
             <figcaption class="slideshow__figcaption"> {{ currentImage.caption }} </figcaption>
          </figure>
+
          <div class="slideshow__controllers">
             <button @click="nextImage" class="slideshow__next">next</button>
+
             <div class="slideshow__navigation">
                <button @click="goToImage(index)" class="Slideshow__index-button" v-for="(image, index) in images" :aria-label="`Go to image ${index + 1}`">o</button>
             </div>
+
             <button @click="previousImage" class="slideshow__previous">previous</button>
          </div>
       </div>
@@ -17,8 +20,6 @@
 </template>
 
 <script>
-
-   
    export default {
       data() {
          return {
@@ -34,7 +35,6 @@
       },
 
    computed:{
-
       // Viser nåværende bilde ihht. 'index' verdi i tilknytning med listelengden.
       currentImage() {
          return this.images[this.index];
@@ -42,7 +42,6 @@
    },
 
    methods:{
-
       // Øker 'index' verdi eller looper tilbake til 0.
       nextImage() {
          this.index = (this.index === this.images.length - 1) ? 0 : this.index + 1;
@@ -59,11 +58,9 @@
       }
    },
 }
-
 </script>
 
 <style>
-
    .slideshow {
       width: 100%;
       height: 100%;
@@ -82,6 +79,4 @@
       width: 90%;
       height: auto;
    }
-
-
 </style>

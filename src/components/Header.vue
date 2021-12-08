@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="header__navContainer">
-            <Hamburger />
+       <Hamburger />
     </div> 
   </div>
 </template>
@@ -25,10 +25,7 @@ export default {
     components: {
            Hamburger,
         },
-    data() {
-        
-    
-        Hamburger},
+  
 }
 </script>
 
