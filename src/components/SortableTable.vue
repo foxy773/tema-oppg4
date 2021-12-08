@@ -19,7 +19,7 @@
 		
 	</div>
 	<div class="controlpanel">
-		<button @click="toggleSortOrder">Sort: {{ sort.key }} ({{ sort.order.toUpperCase() }})</button>
+		<a @click="toggleSortOrder">Sort: {{ sort.key }} ({{ sort.order.toUpperCase() }})</a>
 		<div class="dropdown">
 			<h3>Filter: {{ sort.currentFilter }}</h3>
 		<ul class="dropdown__list">
