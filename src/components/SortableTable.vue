@@ -6,7 +6,7 @@
 		<table class="tableContainer__employeeTable">
 			<thead class="tableContainer__employeeTable__head">
 				<tr>
-					<th class="employeeTable__head__item" v-for="category in content.categories">{{ category.string }} <img src="./../../public/assets/sortableTable/down-arrow.svg" alt=""></th>
+					<th class="employeeTable__head__item" v-for="category in content.categories">{{ category.string }}</th>
 				</tr>
 			</thead>
 
@@ -21,12 +21,12 @@
 	<div class="controlpanel">
 		<button @click="toggleSortOrder">Sort: {{ sort.key }} ({{ sort.order.toUpperCase() }})</button>
 		<div class="dropdown">
-		<h3>Filter: {{ sort.currentFilter }}</h3>
+			<h3>Filter: {{ sort.currentFilter }}</h3>
 		<ul class="dropdown__list">
 			<li class="dropdown__list__item" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
 		</ul>
-	</div>
-	</div>
+		</div>
+		</div>
 	</div>
 </template>
 
@@ -159,11 +159,6 @@
 
 	.employeeTable__head__item:last-child {
 		border-radius: 0 10px 0  0;
-	}
-
-	.employeeTable__head__item img {
-		width: 25px;
-		height: auto;
 	}
 
 	.tableContainer__employeeTable__body tr:last-child td:last-child {
