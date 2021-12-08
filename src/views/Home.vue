@@ -40,22 +40,27 @@ export default {
 
 .component-mount__contact-form {
   background: lightgray;
+  height: 500px;
 }
 
 .component-mount__quiz-app {
   background: lightgray;
+  height: 500px;
 }
 
 .component-mount__slideshow {
   background: lightgray;
+  height: 500px;
 }
 
 .component-mount__sortable-table {
   background: lightgray;
+  height: 500px;
 }
 
 .component-mount__todo-list {
   background: lightgray;
+  height: 500px;
 }
 
 @media screen and (max-width: 1200px) {

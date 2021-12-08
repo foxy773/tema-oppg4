@@ -166,7 +166,7 @@ export default {
 <style>
 .quizContainer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: 1.5rem;
   background: rgb(41, 41, 41);
   font-family: Arial, Helvetica, sans-serif;
