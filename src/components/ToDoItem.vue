@@ -3,7 +3,7 @@
 
       <div :class="`task__content ${task.done ? 'task__content--done' : ''}`">
             <input :ref="task.id" class="task__input" type="text" placeholder="New task" v-model="task.text">
-            <button class="task__done" aria-label="Done" @click="emitDone"><ToDoIcon :icon="'done'" /></button>
+            <button class="task__done" aria-label="Done" @click="emitDone"><ToDoIcon /></button>
       </div>
 
       <button class="task__remove" aria-label="Remove" @click="emitRemove">Remove</button>
@@ -19,10 +19,10 @@
       },
 
       components: {
-         ToDoIcon
+         ToDoIcon,
       },
 
-      // Vue queryselector.
+      // Vue sin native queryselector, funksjonen sikter inn på objekter via custom ID generert i 'id()'.
       mounted() {
          const input = this.$refs[this.task.id];
 
@@ -57,7 +57,7 @@
 
    .task__content {
       width: 90%;
-      height: 11%;
+      height: 30px;
       background: white;
       border-radius: 15px;
       display: flex;
@@ -65,31 +65,44 @@
       align-items: center;
    }
 
-   .task__content--done {
-      color: blue;
-   }
-
    .task__done {
       background: none;
       border: none;
-      margin-right: 0.6%;
+      margin: 0rem 0.5rem 0rem 0.5rem;
    }
 
    .task__input {
       width: 100%;
       height: 100%;
+      color: #032B43;
       font-size: 1.05rem;
       background: none;
       border: none;
-      margin-left: 2%;
+      margin-left: 0.5rem;
    }
 
    .task__remove {
-      color: gray;
+      width: 4.2rem;
+      color: #FFBA08;
       background: none;
       border: none;
       cursor: pointer;
       margin-left: 3%;
+   }
+
+   .task__remove:hover {
+      color: white;
+      font-size: 1rem;
+      transition: ease-in-out 0.2s;
+   }
+
+   .task__content--done circle {
+      fill: #FFBA08;
+      stroke: #FFBA08;
+   }
+
+   .task__content--done circle:hover {
+      stroke: #032B43;
    }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-   <div class="todo__container">
+   <div class="todo__mount">
       <ToDo />
    </div>
 </template>
@@ -15,5 +15,9 @@
 </script>
 
 <style>
+   .todo__mount {
+      width: 100vw;
+      height: 85vh;
+   }
 
 </style>

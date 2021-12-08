@@ -1,12 +1,36 @@
 
 <template>
    <div class="todo">
-      <div class="todo__header">
-         <div class="todo__title">Things_due</div>
-      </div>
-      <div class="todo__content">
-         <template v-if="tasks.length > 0 && showSeparateLists">
-            <div class="todo__task">
+      <div class="todo__container">
+         <div class="todo__header">
+            <div class="todo__title">Things_due</div>
+            <div class="todo__subtitle">utlimate taskmanager</div>
+         </div>
+         <div class="todo__content">
+            <template v-if="tasks.length > 0 && showSeparateLists">
+               <div class="todo__task">
+                  <ToDoItem
+                     @updated-task="storeTasksLocally"
+                     @done-task="doneTask"
+                     @remove-task="removeTask"
+                     v-for="task in pendingTasks"
+                     :task="task"
+                  />
+                  <button @click="addTask" class="todo__add-new">Add new +</button>
+               </div>
+               <div class="todo__divider" v-if="doneTasks.length > 0 && pendingTasks.length > 0" >Completed</div>
+               <div class="todo__task">
+                  <ToDoItem
+                     @updated-task="storeTasksLocally"
+                     @done-task="doneTask"
+                     @remove-task="removeTask"
+                     v-for="task in doneTasks"
+                     :task="task"
+                  />
+               </div>
+            </template>
+
+            <template v-else>
                <ToDoItem
                   @updated-task="storeTasksLocally"
                   @done-task="doneTask"
@@ -14,30 +38,9 @@
                   v-for="task in pendingTasks"
                   :task="task"
                />
-               <button @click="addTask" class="todo__add-new">Add new</button>
-            </div>
-            <div class="todo__divider" v-if="doneTasks.length > 0 && pendingTasks.length > 0" >Completed</div>
-            <div class="todo__task">
-               <ToDoItem
-                  @updated-task="storeTasksLocally"
-                  @done-task="doneTask"
-                  @remove-task="removeTask"
-                  v-for="task in doneTasks"
-                  :task="task"
-               />
-            </div>
-         </template>
-
-         <template v-else>
-            <ToDoItem
-               @updated-task="storeTasksLocally"
-               @done-task="doneTask"
-               @remove-task="removeTask"
-               v-for="task in pendingTasks"
-               :task="task"
-            />
-            <button @click="addTask" class="todo__add-new">Add new</button>
-         </template>
+               <button @click="addTask" class="todo__add-new">Add new +</button>
+            </template>
+         </div>
       </div>
    </div>
 </template>
@@ -53,7 +56,9 @@
 
       data() {
          return {
-            tasks: [],
+            tasks: [
+               { id: this.id(), text: '', done: false }
+            ],
             showSeparateLists: true,
          }
       },
@@ -124,22 +129,48 @@
    .todo {
       width: 100%;
       height: 100%;
-      background: lightgray;
-      padding: 3vw;
+      color: #FFBA08;
+      background: #032B43;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .todo__container {
+      width: 80%;
+      max-width: 600px;
+      height: 100%;
    }
 
    .todo__header {
-      height: 20%;
+      height: 10rem;
+      margin-bottom: 5%;
+      border-bottom: solid #FFBA08 1px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start;
+
    }
 
    .todo__title {
       font-size: 1.5rem;
       font-weight: bold;
       font-style: italic;
+      letter-spacing: 0.2rem;
+   }
+
+   .todo__subtitle {
+      text-transform: uppercase;
+      letter-spacing: 0.5vw;
+      font-size: 0.8rem;
+      font-weight: bold;
+      font-style: italic;
+      padding-left: 1%;
    }
 
    .todo__content {
-      padding-left: 8%;
+      height: 100%;
       overflow-y: scroll;
    }
 
@@ -148,28 +179,34 @@
    }
  
    .todo__add-new {
-      color: gray;
+      color: #FFBA08;
+      font-weight: 500;
       background: none;
-      border: none;
+      border: solid #FFBA08 1px;
+      border-radius: 13px;
       cursor: pointer;
-      padding: 4% 0% 0% 1%;
+      padding: 0.7% 1.5% 0.7% 2%;
+      margin: 4% 0% 4% 0%;
+   }
+
+   .todo__add-new:hover {
+      color: white;
+      font-size: 1rem;
+      border: solid white 1px;
+      transition: ease-in-out 0.2s;
+
    }
 
    .todo__divider {
-      color: gray;
       width: 100%;
-      border-bottom: solid gray 1px;
+      color: #FFBA08;
+      border-bottom: solid #FFBA08 1px;
+      font-style: italic;
+      font-weight: 600;
       text-align: end;
       margin: 1vh 0vh 3vh 0vh;
       padding-bottom: 1vh;
    }
-
-   @media screen and (max-width: 735px) {
-      .todo {
-         width: 50%;
-      }
-   }
-
 
 
 </style>

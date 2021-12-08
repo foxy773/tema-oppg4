@@ -39,7 +39,7 @@ export default {
   height: 125px;
   width: 100%;
   background: white;
-  border-bottom: solid black 2px;
+  border-bottom: solid black 1px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
