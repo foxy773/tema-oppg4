@@ -1,5 +1,5 @@
 <template>
-   <div class="">
+   <div class="contact-form__mount">
       <ContactForm />
    </div>
 </template>
@@ -17,5 +17,8 @@ export default {
 </script>
 
 <style>
-
+   .contact-form__mount {
+      width: 100vw;
+      height: 85vh;
+   }
 </style>

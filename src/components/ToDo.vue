@@ -196,7 +196,6 @@
       font-size: 1rem;
       border: solid white 1px;
       transition: ease-in-out 0.2s;
-
    }
 
    .todo__divider {
@@ -209,6 +208,5 @@
       margin: 1vh 0vh 3vh 0vh;
       padding-bottom: 1vh;
    }
-
 
 </style>
