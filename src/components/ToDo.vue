@@ -137,13 +137,14 @@
    }
 
    .todo__container {
+      height: 100%;
       width: 80%;
       max-width: 600px;
-      height: 100%;
+      padding: 4% 0% 4% 0%;
    }
 
    .todo__header {
-      height: 10rem;
+      height: 20%;
       margin-bottom: 5%;
       border-bottom: solid #FFBA08 1px;
       display: flex;
@@ -154,7 +155,7 @@
    }
 
    .todo__title {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
       font-style: italic;
       letter-spacing: 0.2rem;
@@ -170,7 +171,8 @@
    }
 
    .todo__content {
-      height: 100%;
+      height: 80%;
+      padding: 2% 0% 2% 0%;
       overflow-y: scroll;
    }
 
