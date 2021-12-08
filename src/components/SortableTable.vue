@@ -1,12 +1,12 @@
 <template>
-<div class="tableContainer">
+<!-- <div class="tableContainer">
 	<input v-model="search" class="tableContainer__search" name="" id="" placeholder="Search for any of the keys above">
 
 	<table class="tableContainer__table">
 		<thead>
 			<tr>
 				<th v-repeat:="column: columns">
-					<a href="#" @click="click: sortBy(column)" v-class="active: sortKey == column">
+					<a href="#" @click="click: sortBy(column)" v-class="active:sortKey == column">
 						{{ column | capitalize }}
 					</a>
 
@@ -15,7 +15,8 @@
 		</thead>
 	</table>
 </div>
-	
+	 -->
+	 <div></div>
 </template>
 
 <script>
