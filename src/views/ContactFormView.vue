@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import ContactForm from '../components/ContactForm.vue'
 
 export default {
@@ -13,7 +12,6 @@ export default {
       ContactForm
    }
 }
-
 </script>
 
 <style>

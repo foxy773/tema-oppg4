@@ -8,37 +8,46 @@
             <div class="contact-form__form">
                 <input class="contact-form__input" type="text" placeholder="Name" form="name" v-model="form.name">
                 <input class="contact-form__input" type="text" placeholder="Address" form="address" v-model="form.address">
+
                 <div class="contact-form__under-element">
                     <input class="contact-form__input" type="text" placeholder="City" form="city" v-model="form.city">
                     <input class="contact-form__input" type="text" placeholder="Zip code" v-model="form.zipCode">
                 </div>
+
                 <input class="contact-form__input" type="email" placeholder="Email" form="email" v-model="form.email">
             </div>
             <div class="contact-form__order-assembler">
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Size</div>
+
                     <select v-model="form.customVariation.thisSize">
                         <option disabled value="Select variation">Select size</option>
                         <option v-for="sizes in content.sizes"> {{ sizes }} </option>
                     </select>
+
                 </div>
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Taste</div>
+
                     <select v-model="form.customVariation.thisTaste">
                         <option disabled value="Select variation">Select taste</option>
                         <option v-for="tastes in content.tastes"> {{ tastes }} </option>
                     </select>
+
                 </div>
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Variation</div>
+
                     <select v-model="form.customVariation.thisVariation">
                         <option disabled value="Select variation">Select variation</option>
                         <option v-for="variation in content.variation"> {{ variation }} </option>
                     </select>
+
                 </div>
                 <button class="contact-form__add-button" @click="push_order">Add</button>
             </div>
             <div class="contact-form__order-container">
+
                 <label v-for="(balloon, index) in order">
                     <div class="contact-form__order-item">
                         <div> {{ balloon.thisSize }} </div>
@@ -47,6 +56,7 @@
                         <button class="contact-form__remove-button" @click="remove_order(index)">Remove</button>
                     </div>
                 </label>
+
             </div>
             <button class="contact-form__submit-button" @click="submit_order">Submit order</button>
         </div>
@@ -78,14 +88,18 @@ export default {
         }
     },
     methods: {
+
+        // Pushes customVariation and its edited values as a separate object into the 'order' list.
         push_order() {
             this.order.push({ ...this.form.customVariation })
         },
 
+        // Splices objects in the 'order' list based on the objects index.
         remove_order(index) {
             this.order.splice(index, 1);
         },
 
+        // Pushes a popup with a prewritten message, which has a template literal incorporated that displays the 'name' value in 'form' list.
         submit_order() {
             alert(`Thank you, ${this.form.name}, for ordering with us at DongYourSlong.no. Your order will be delivered in a neutral packaging at your local postbox with your personal message displayed on the packaging. We hope you enjoy your product and hope to do more business in the future.`)
         }
@@ -116,6 +130,8 @@ export default {
         padding: 4% 0% 4% 0%;
     }
 
+
+
     /* 2.1 Header */
 
     .contact-form__header {
@@ -132,6 +148,8 @@ export default {
         font-weight: bold;
         margin-bottom: 5%;
     }
+
+
 
     /* 3.1 Form */
 
@@ -164,6 +182,8 @@ export default {
         height: 8em;
     }
 
+
+
     /* 4.1 Order assembler */
 
     .contact-form__order-assembler {
@@ -195,6 +215,14 @@ export default {
         border: none;
         border-radius: 3px;
     }
+
+    .contact-form__add-button:hover {
+        color: #EF233C;
+        background: white;
+        transition: 0.2s;
+    }
+
+
 
     /* 5.1 Order container */
 
@@ -233,6 +261,12 @@ export default {
         text-transform: uppercase;
         border: none;
         border-radius: 10px;
+    }
+
+    .contact-form__submit-button:hover {
+        color: #EF233C;
+        background: white;
+        transition: 0.2s;
     }
 
 </style>

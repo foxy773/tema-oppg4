@@ -141,6 +141,7 @@
       width: 80%;
       max-width: 600px;
       padding: 4% 0% 4% 0%;
+      overflow-y: scroll;
    }
 
    .todo__header {
@@ -173,7 +174,6 @@
    .todo__content {
       height: 80%;
       padding: 2% 0% 2% 0%;
-      overflow-y: scroll;
    }
 
    .todo__task {

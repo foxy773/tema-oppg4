@@ -51,6 +51,7 @@ export default {
 .component-mount__slideshow {
   background: lightgray;
   height: 500px;
+  position: relative;
 }
 
 .component-mount__sortable-table {
