@@ -68,7 +68,6 @@
 </script>
 
 <style>
-
    /*********** 1.0 Base ************/
 
    .slideshow {
@@ -117,13 +116,13 @@
    /* 2.2 Binary */
 
    .slideshow__binary-controller {
-      width: 13rem;
+      width: 12.5rem;
       display: flex;
       justify-content: space-between;
    }
 
    .slideshow__next {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
       text-transform: uppercase;
       padding: 0.4rem 0.3rem 0.2rem 1rem;
@@ -131,7 +130,7 @@
    }
 
    .slideshow__previous {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
       text-transform: uppercase;
       padding: 0.4rem 1rem 0.2rem 0.3rem;
@@ -141,12 +140,14 @@
    .slideshow__next:hover {
       color: white;
       background: blue;
+      padding: 0.4rem 1rem 0.2rem 0.3rem;
       transition: 0.2s;
    }
 
    .slideshow__previous:hover {
       color: white;
       background: blue;
+      padding: 0.4rem 0.3rem 0.2rem 1rem;
       transition: 0.2s;
    }
 
@@ -168,10 +169,11 @@
       position: absolute;
       z-index: 16;
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: bold;
       font-style: italic;
       letter-spacing: 0.2rem;
+      text-shadow: 0px 0px 8px black;
 
    }
 
@@ -190,5 +192,4 @@
    .slideshow__figcaption {
       display: none;
    }
-
 </style>
