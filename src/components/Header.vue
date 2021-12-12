@@ -1,15 +1,15 @@
 <template>
   <div class="header">
     <div class="header__logowrapper">
-      <div class="header__logowrapper__logo">
+      <div class="logowrapper__logo">
         <img src="./../../public/assets/header/LogotheLab.svg" alt="" />
       </div>
-      <div class="header__logowrapper__subtext">
-        <div class="header__logowrapper__subtext__catchfrase">
+      <div class="logowrapper__subtext">
+        <div class="subtext__catchfrase">
           a collection <br />
           of custom components
         </div>
-        <div class="header__logowrapper__subtext__version">THELAB_V1.exe</div>
+        <div class="subtext__version">THELAB_V1.exe</div>
       </div>
     </div>
     <div class="header__navContainer">
@@ -54,7 +54,7 @@ export default {
   justify-content: flex-end;
 }
 
-.header__logowrapper__logo {
+.logowrapper__logo {
   display: flex;
   width: 400px;
   height: auto;
@@ -65,19 +65,19 @@ export default {
   justify-content: center;
 }
 
-.header__logowrapper__subtext {
+.logowrapper__subtext {
   height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.header__logowrapper__subtext__catchfrase {
+.subtext__catchfrase {
   font-size: 0.7rem;
   text-transform: uppercase;
 }
 
-.header__logowrapper__subtext__version {
+.subtext__version {
   font-weight: 900;
   font-style: italic;
   font-size: 0.8rem;

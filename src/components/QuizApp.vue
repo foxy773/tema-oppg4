@@ -1,24 +1,27 @@
 <template>
   <section class="quizContainer">
+
+    <!-- Showes the current and total questions. -->
     <div class="quizContainer__status" v-if="!this.resultsTime">
       <h2>Questions: {{ questionIndex + 1 }}/{{ totalQuestions }}</h2>
     </div>
 
+    <!-- Shows your result if you have answered all the questions. -->
     <div class="quizContainer__status" v-else>
       <h2>Your Results</h2>
     </div>
 
+    <!-- --''-- -->
     <div class="quizContainer__question" v-if="!this.resultsTime">
       <h2>{{ currentQuestion.question }}</h2>
     </div>
 
+    <!-- Creates a button for each option, for the current question in the questions array. -->
     <div class="quizContainer__answers" v-if="!this.resultsTime">
-      <button
-        class="answers__options" @click="nextQuestion(answer)" v-for="(answer, index) in currentQuestion.answers">
-        {{ answer.answer }}
-      </button>
+      <button class="answers__options" @click="nextQuestion(answer)" v-for="(answer, index) in currentQuestion.answers">{{ answer.answer }}</button>
     </div>
 
+    <!-- Showes an correct or wrong image for each answered question, and a retry button at the end that resets the quiz. -->
     <div class="quizContainer__results" v-else>
       <div v-for="(answer, index) in answered">
         <img src="./../../public/assets/quiz-app/wrong.svg" alt="" v-if="answer.wrong" />
@@ -29,29 +32,26 @@
       <button @click="resetQuiz()">Retry</button>
     </div>
   </section>
-
-  <audio controls muted hidden>
-    <source src="/assets/quiz-app/music-kahoot.mp3" type="audio/mpeg" />
-  </audio>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      questionIndex: 0,
-      answered: [],
-      resultsTime: false,
-      questions: [
+      questionIndex: 0,     // The current index in the "questions" array that is displayed.
+      answered: [],         // This is where all answers to all questions is getting stores to later be used to display a score.
+      resultsTime: false,   // A boolean used to display the final results if the state is true.
+      questions: [          // The array that stores all the questions and possible answers for each question, as well as whom of them is the correct one.
         {
-          question: "How many days are there in a year?",
-          answers: [
+          question: "How many days are there in a year?", // Question being displayed for the user to answer to.
+          answers: [                                      // all the options for the question above that is selectable by the user.
             { answer: "324", wrong: true },
             { answer: "311", wrong: true },
-            { answer: "365", wrong: false },
+            { answer: "365", wrong: false },              // This is one option to answer. This one is the correct for the question above.
             { answer: "355.3", wrong: true },
           ],
         },
+
         {
           question: "How many continents exists on Earth?",
           answers: [
@@ -61,6 +61,7 @@ export default {
             { answer: "3", wrong: true },
           ],
         },
+
         {
           question: "In what year did WW2 start?",
           answers: [
@@ -70,6 +71,7 @@ export default {
             { answer: "September 2nd 1944", wrong: true },
           ],
         },
+
         {
           question: "What's the biggest animal in the world?",
           answers: [
@@ -79,6 +81,7 @@ export default {
             { answer: "The saltwater crocodile", wrong: true },
           ],
         },
+
         {
           question: "Which country is brie cheese originally from?",
           answers: [
@@ -88,6 +91,7 @@ export default {
             { answer: "France", wrong: false },
           ],
         },
+
         {
           question: "What year was Heinz established?",
           answers: [
@@ -97,6 +101,7 @@ export default {
             { answer: "1927", wrong: true },
           ],
         },
+
         {
           question: "What is the capital of Iceland?",
           answers: [
@@ -106,6 +111,7 @@ export default {
             { answer: "Alajärvi", wrong: true },
           ],
         },
+
         {
           question: "What does IPA stand for",
           answers: [
@@ -115,6 +121,7 @@ export default {
             { answer: "India Pale Ale", wrong: false },
           ],
         },
+
         {
           question: "Who painted the Mona Lisa?",
           answers: [
@@ -127,27 +134,40 @@ export default {
       ],
     };
   },
+
   computed: {
+
+    // Returns the length of the "questions" array. This being used to show the total questions to the user.
     totalQuestions() {
       return this.questions.length;
     },
 
+    // Returns the current index value in the "questions" array. This being used to show how many questions the user has answered.
     currentQuestion() {
       return this.questions[this.questionIndex];
     },
   },
+
   methods: {
+
+    // determines if there are any questions left to be answered, if there are, the "questionIndex" that determines
+    // current question being shown will be iterated by 1. If there are not any more questions, resultsTime that
+    // determines when the total score will be shown will be switched from false to true.
     nextQuestion(answer) {
+
       if (this.questionIndex + 1 < this.questions.length) {
         this.questionIndex++;
       } else {
         this.resultsTime = true;
       }
       
-      this.answered.push(answer);
+       // Sends the object that 
+      console.log(this.answered.push(answer));
     },
     
+    //Reset
     resetQuiz() {
+
       this.questionIndex = 0;
       this.answered = [];
       this.resultsTime = false;
@@ -253,12 +273,15 @@ export default {
 .answers__options:nth-child(1) {
   background: crimson;
 }
+
 .answers__options:nth-child(2) {
   background: yellow;
 }
+
 .answers__options:nth-child(3) {
   background: lightseagreen;
 }
+
 .answers__options:nth-child(4) {
   background: rgb(82, 189, 255);
 }

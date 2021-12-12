@@ -5,8 +5,9 @@
         	<ul class="menu__list">
 
                 <li class="list__item" v-for="link in navigation">
-					<a class="item__link" :href="`${link.pageLink}`">{{ link.pageName }}</a>
-				</li>
+					<!--<a class="item__link" :href="`${link.pageLink}`">{{ link.pageName }}</a>-->
+						<router-link class="item__link" :to="`${link.pageLink}`">{{ link.pageName }}</router-link>
+					</li>
             </ul>	
     	</nav>
 	</div>
