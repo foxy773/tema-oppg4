@@ -3,17 +3,18 @@
       <div class="slideshow__container">
          <div class="slideshow__controllers">
             <div class="slideshow__index-controller">
-
                <button @click="goToImage(index)" class="Slideshow__index-button" v-for="(image, index) in images" :aria-label="`Go to image ${index + 1}`">
                   <svg width="26" height="15" viewBox="0 0 26 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path d="M8.32 0H26L17.68 15H0L8.32 0Z" fill="#EDEDED"/>
                   </svg>
                </button>
             </div>
+
             <div class="slideshow__binary-controller">
                <button @click="previousImage" class="slideshow__previous">previous</button>
                <button @click="nextImage" class="slideshow__next">next</button>
             </div>
+
          </div>
          <div class="slideshow__images">
             <div class="slideshow__name"> {{ currentImage.name }} </div>
@@ -32,11 +33,11 @@
          return {
             index: 0,
             images: [
-               { name: 'Birdview', caption: 'Birdview', src: '/assets/slideshow/bird-view.jpg' },
-               { name: 'Bridge', caption: 'Bridge', src: '/assets/slideshow/bridge.jpg' },
-               { name: 'Street', caption: 'Street', src: '/assets/slideshow/street.jpg' },
-               { name: 'Traffic', caption: 'Traffic', src: '/assets/slideshow/traffic.jpg' },
-               { name: 'Tall buildings', caption: 'Tall buildings', src: '/assets/slideshow/tall-buildings.jpg' },
+               { name: "Birdview", caption: "Birdview", src: "/assets/slideshow/bird-view.jpg" },
+               { name: "Bridge", caption: "Bridge", src: "/assets/slideshow/bridge.jpg" },
+               { name: "Street", caption: "Street", src: "/assets/slideshow/street.jpg" },
+               { name: "Traffic", caption: "Traffic", src: "/assets/slideshow/traffic.jpg" },
+               { name: "Tall buildings", caption: "Tall buildings", src: "/assets/slideshow/tall-buildings.jpg" },
             ],
          }
       },
@@ -84,6 +85,8 @@
    }
 
    /*********** 2.0 Controllesrs ************/
+
+   /* 2.1 Main */
 
    .slideshow__controllers {
       width: 100%;
@@ -151,7 +154,7 @@
       transition: 0.2s;
    }
 
-    /*********** 3.0 Images ************/
+   /*********** 3.0 Images ************/
 
    .slideshow__images {
       width: 100%;
@@ -174,7 +177,6 @@
       font-style: italic;
       letter-spacing: 0.2rem;
       text-shadow: 0px 0px 8px black;
-
    }
 
    .slideshow___image {

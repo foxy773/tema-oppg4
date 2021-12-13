@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
         <div class="footer__creatorwrapper">
-            <div class="footer__creatorwrapper__text">
-                <div class="footer__creatorwrapper__text__forewords">designed &amp; <br> developed by</div>
-                <div class="footer__creatorwrapper__text__creators">two_handsome_fellas.tmp</div>
+            <div class="footer__text">
+                <div class="footer__forewords">designed &amp; <br> developed by</div>
+                <div class="footer__creators">two_handsome_fellas.tmp</div>
             </div>
         </div>
     </div>
@@ -27,19 +27,19 @@
         padding-right: 5vw;
     }
 
-    .footer__creatorwrapper__text {
+    .footer__text {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
     }
 
-    .footer__creatorwrapper__text__forewords {
+    .footer__forewords {
         font-size: 0.7rem;
         text-transform: uppercase;
         margin-bottom: 1vh;
     }
 
-    .footer__creatorwrapper__text__creators {
+    .footer__creators {
         font-weight: 900;
         font-style: italic;
         font-size: 0.8rem;

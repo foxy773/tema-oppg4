@@ -46,7 +46,7 @@
 </template>
 
 <script>
-   import ToDoItem from './ToDoItem.vue'
+   import ToDoItem from "./ToDoItem.vue"
 
    export default {
 
@@ -57,7 +57,7 @@
       data() {
          return {
             tasks: [
-               { id: this.id(), text: '', done: false }
+               { id: this.id(), text: "", done: false }
             ],
             showSeparateLists: true,
          }
@@ -89,7 +89,7 @@
 
          // Lager og pusher "task" objekt inn i "tasks" listen & lagrer det som stringified JSON lokalt i nettleseren.
          addTask() {
-            this.tasks.push({ id: this.id(), text: '', done: false });
+            this.tasks.push({ id: this.id(), text: "", done: false });
             this.storeTasksLocally();
          },
 
@@ -208,5 +208,4 @@
       margin: 1vh 0vh 3vh 0vh;
       padding-bottom: 1vh;
    }
-
 </style>

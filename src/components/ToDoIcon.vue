@@ -5,7 +5,6 @@
 </template>
 
 <style>
-
    .todo-icon {
 		display: block;
 		overflow: visible;
@@ -18,5 +17,4 @@
       stroke: #FFBA08;
       transition: ease-in-out 0.15s;
    }
-
 </style>

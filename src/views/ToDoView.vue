@@ -5,7 +5,7 @@
 </template>
 
 <script>
-   import ToDo from '../components/ToDo.vue'
+   import ToDo from "../components/ToDo.vue"
 
    export default {
       components: {
@@ -19,5 +19,4 @@
       width: 100vw;
       height: 85vh;
    }
-
 </style>

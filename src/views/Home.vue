@@ -13,7 +13,7 @@ import ContactForm from "../components/ContactForm.vue";
 import QuizApp from "../components/QuizApp.vue";
 import Slideshow from "../components/Slideshow.vue";
 import SortableTable from "../components/SortableTable.vue";
-import ToDo from '../components/ToDo.vue';
+import ToDo from "../components/ToDo.vue";
 
 export default {
   components: {

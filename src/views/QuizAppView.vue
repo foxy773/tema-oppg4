@@ -1,11 +1,11 @@
 <template>
-   <div class="">
+   <div>
       <QuizApp />
    </div>
 </template>
 
 <script>
-   import QuizApp from '../components/QuizApp.vue'
+   import QuizApp from "../components/QuizApp.vue"
 
    export default {
       components: {

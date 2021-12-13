@@ -86,8 +86,6 @@ export default {
 }
 
 
-
-
 /*Utility*/
 .open {
 	opacity: 1;

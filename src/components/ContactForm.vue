@@ -80,9 +80,9 @@ export default {
                 },
             },
             content: {
-                sizes: ['XS', 'S', 'M', 'L', 'XL', 'JUMBO', 'MANDINGO'],
-                tastes: ['Neutral', 'Strawberry', 'Melon', 'Cola', 'Chocolate', 'Banana', 'Mango'],
-                variation: ['Extra sensitive', 'Ultra thin', 'Snug fit', 'Comfy fit', 'Ribbed & Dotted' ]
+                sizes: ["XS", "S", "M", "L", "XL", "JUMBO", "MANDINGO"],
+                tastes: ["Neutral", "Strawberry", "Melon", "Cola", "Chocolate", "Banana", "Mango"],
+                variation: ["Extra sensitive", "Ultra thin", "Snug fit", "Comfy fit", "Ribbed & Dotted"]
             },
             order:[],
         }
@@ -113,7 +113,7 @@ export default {
     /* 1.1 Base */
 
     .contact-form {
-        font-family:'Times New Roman', Times, serif;
+        font-family:"Times New Roman", Times, serif;
         width: 100%;
         height: 100%;
         color: #EF233C;
@@ -135,7 +135,7 @@ export default {
     /* 2.1 Header */
 
     .contact-form__header {
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
         margin-bottom: 8%;
         display: flex;
         flex-direction: column;

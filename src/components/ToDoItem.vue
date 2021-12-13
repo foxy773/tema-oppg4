@@ -1,7 +1,7 @@
 <template>
    <div class="task">
 
-      <div :class="`task__content ${task.done ? 'task__content--done' : ''}`">
+      <div :class="`task__content ${task.done ? "task__content--done" : ""}`">
             <input :ref="task.id" class="task__input" type="text" placeholder="New task" v-model="task.text">
             <button class="task__done" aria-label="Done" @click="emitDone"><ToDoIcon /></button>
       </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-   import ToDoIcon from '../components/ToDoIcon.vue'
+   import ToDoIcon from "../components/ToDoIcon.vue"
 
    export default {
       props: {
@@ -31,25 +31,24 @@
 
       // Sender input oppdatering aktivt til 'tasks' listen i foreldre-elementet.
       updated() {
-         this.$emit('updated-task', this.task);
+         this.$emit("updated-task", this.task);
       },
 
       methods: {
          // Sender en event ved aktivering til 'doneTask' funksjonen i foreldre-elementet.
          emitDone() {
-            this.$emit('done-task', this.task);
+            this.$emit("done-task", this.task);
          },
 
          // Sender en event ved aktivering til 'removeTask' funksjonen i foreldre-elementet.
          emitRemove() {
-            this.$emit('remove-task', this.task);
+            this.$emit("remove-task", this.task);
          },
       },
    }
 </script>
 
 <style>
-
    .task {
       display: flex;
       margin: 1% 0% 1% 0%;
@@ -104,5 +103,4 @@
    .task__content--done circle:hover {
       stroke: #032B43;
    }
-
 </style>

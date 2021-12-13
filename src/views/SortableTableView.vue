@@ -1,11 +1,11 @@
 <template>
-   <div class="">
+   <div>
       <SortableTable />
    </div>
 </template>
 
 <script>
-   import SortableTable from '../components/SortableTable.vue'
+   import SortableTable from "../components/SortableTable.vue"
 
    export default {
       components: {
@@ -13,7 +13,3 @@
       }
    }
 </script>
-
-<style>
-
-</style>
