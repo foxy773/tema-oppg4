@@ -1,4 +1,3 @@
-
 <template>
    <div class="todo">
       <div class="todo__container">
@@ -46,7 +45,7 @@
 </template>
 
 <script>
-   import ToDoItem from "./ToDoItem.vue"
+   import ToDoItem from "../components/ToDoItem.vue"
 
    export default {
 
@@ -114,12 +113,12 @@
 
          // Etterfølger funksjoner og lagrer endringer som er gjort i form av Stringified JSON lokalt i nettleseren.
          storeTasksLocally() {
-            window.localStorage.setItem('class', JSON.stringify(this.Tasks));
+            window.localStorage.setItem("class", JSON.stringify(this.Tasks));
          },
 
          // Konverterer lagrede JSON elementer i det lokale minnet i nettleseren tilbake til aktiv kode.
          returnTasksLocally() {
-            return JSON.parse(window.localStorage.getItem('todo__task'))
+            return JSON.parse(window.localStorage.getItem("todo__task"))
          }
       }
    }
