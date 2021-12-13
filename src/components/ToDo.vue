@@ -62,7 +62,7 @@
          }
       },
 
-      // Påser at alt av data og komponenter er ferdigsatt før siden lastes inn ( slippe at ting lastes inn etter launch )
+      // Makes sure all data and components are loaded completely before the page loads in ( no need to load things in after launch ).
       created() {
          const localState = this.returnTasksLocally();
 
@@ -73,12 +73,12 @@
 
       computed: {
 
-         // Filtrerer alle "task" objekter med verdien false i ".done"til pending.
+         // Filters all "task" objects with the value false in ".done" to pending.
          pendingTasks() {
             return this.tasks.filter(task => task.done === false);
          },
 
-         // Filtrerer alle "task" objekter med verdien true i ".done" til done.
+         // Filters all "task" objects with the value true in ".done" to done.
          doneTasks() {
             return this.tasks.filter(task => task.done === true);
          },
@@ -86,37 +86,37 @@
 
       methods: {
 
-         // Lager og pusher "task" objekt inn i "tasks" listen & lagrer det som stringified JSON lokalt i nettleseren.
+         // Creates and pushes "task" objects into "tasks" array & saves it as stringified JSON locally in the browser.
          addTask() {
             this.tasks.push({ id: this.id(), text: "", done: false });
             this.storeTasksLocally();
          },
 
-         // Fjerner "task" objekt fra "tasks" listen & lagrer endringen som stringified JSON lokalt i nettleseren.
+         // Remove "task" objects form "tasks" array & saves the changes as stringified JSON locally in the browser.
          removeTask(task) {
             const taskIndex = this.tasks.findIndex(task_in_tasks => task_in_tasks.id === task.id);
             this.tasks.splice(taskIndex, 1);
             this.storeTasksLocally();
          },
 
-         // Toggler boolean verdien i tasks.done.
+         // Toggles boolean value in tasks.done.
          doneTask(task) {
 				const taskIndex = this.tasks.findIndex(task_in_tasks => task_in_tasks.id === task.id);
 				this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
 				this.storeTasksLocally();
 			},
 
-         // Lager en custom ID til hver "task" som andre funskjoner kan sikte på.
+         // Creates a custom ID for each "task" that other functions can target onto.
          id() {
             return Math.random().toString(36).slice(2);
          },
 
-         // Etterfølger funksjoner og lagrer endringer som er gjort i form av Stringified JSON lokalt i nettleseren.
+         // Function that follows other functions and saves changes done in form as stringified JSON locally in the browser.
          storeTasksLocally() {
             window.localStorage.setItem("class", JSON.stringify(this.Tasks));
          },
 
-         // Konverterer lagrede JSON elementer i det lokale minnet i nettleseren tilbake til aktiv kode.
+         // Converts saved JSON elements from local memory in the browser back to active code.
          returnTasksLocally() {
             return JSON.parse(window.localStorage.getItem("todo__task"))
          }

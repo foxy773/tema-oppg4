@@ -43,24 +43,24 @@
       },
 
    computed:{
-      // Viser nåværende bilde ihht. 'index' verdi i tilknytning med listelengden.
+      // Shows image from array according to current index.
       currentImage() {
          return this.images[this.index];
       }
    },
 
    methods:{
-      // Øker 'index' verdi med +1 eller looper den hvis den har nådd max listelengde tilbake til 0.
+      // Increases 'index' value with +1 or loops back to 0 after reaching total arraylength.
       nextImage() {
          this.index = (this.index === this.images.length - 1) ? 0 : this.index + 1;
       },
 
-      // Minsker 'index' verdi med -1 eller looper tilbake når den har nådd null tilbake til max listelengde.
+      // Decreases 'index' value with -1 or loops back to total arraylength after reaching 0.
       previousImage() {
          this.index = (this.index === 0) ? this.images.length - 1 : this.index - 1;
       },
 
-      // Redigerer 'index' verdi med samme indexverdi til knappen.
+      // Edits 'index' value to the same indexvalue of the looping buttons.
       goToImage(index) {
          this.index = index;
       }

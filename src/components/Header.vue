@@ -84,7 +84,7 @@ export default {
   text-transform: uppercase;
 }
 
-/* mindre nettbrett */
+/* smaller desktop */
 @media screen and (max-width: 735px) {
   .header {
     grid-template-columns: repeat(7, 1fr);

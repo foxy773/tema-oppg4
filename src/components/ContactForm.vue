@@ -109,7 +109,6 @@ export default {
 </script>
 
 <style>
-
     /* 1.1 Base */
 
     .contact-form {
@@ -149,8 +148,6 @@ export default {
         margin-bottom: 5%;
     }
 
-
-
     /* 3.1 Form */
 
     .contact-form__form {
@@ -181,8 +178,6 @@ export default {
     .contact-form__input__description {
         height: 8em;
     }
-
-
 
     /* 4.1 Order assembler */
 
@@ -221,8 +216,6 @@ export default {
         background: white;
         transition: 0.2s;
     }
-
-
 
     /* 5.1 Order container */
 
@@ -268,5 +261,4 @@ export default {
         background: white;
         transition: 0.2s;
     }
-
 </style>
