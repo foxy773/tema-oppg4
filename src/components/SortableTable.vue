@@ -1,25 +1,24 @@
 <template>
-	<div class="mainContainer">
-		<div class="controlpanel">
-		<a @click="toggleSortOrder">Sort: {{ sort.key }} ({{ sort.order.toUpperCase() }})</a>
-		<div class="dropdown">
-			<h3>Filter: {{ sort.currentFilter }}</h3>
-		<ul class="dropdown__list">
-			<li class="dropdown__list__item" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
-			<img src="./../../public/assets/sortableTable/down-arrow.svg" alt="">
-		</ul>
+	<div class="mainContainer" id="mainContainer">
+		<div class="mainContainer__controlpanel">
+			<a>Sort: {{ sort.currentSort }} ({{ sort.order.toUpperCase() }})</a>
+		<div class="mainContainer__dropdown">
+			<ul class="dropdown__list">
+			<li class="list__category" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
+				<img @click="toggleSortOrder" src="./../../public/assets/sortableTable/down-arrow.svg" alt="" :class="`${sort.ascending ? 'flip-axis-y' : ''}`">
+			</ul>
 		</div>
 		</div>
-	<div class="tableContainer">
+	<div class="mainContainer__tableContainer">
 		<table class="tableContainer__employeeTable">
-			<thead class="tableContainer__employeeTable__head">
+			<thead class="employeeTable__head">
 				<tr>
-					<th class="employeeTable__head__item" v-for="category in content.categories">{{ category.string }}</th>
+					<th class="head__item" v-for="category in content.categories">{{ category.string }}</th>
 				</tr>
 			</thead>
 
-			<tbody class="tableContainer__employeeTable__body">
-				<tr class="employeeTable__body__row" v-for="row in naturalSort">
+			<tbody class="employeeTable__body">
+				<tr class="body__row" v-for="row in naturalSort">
 					<td v-for="value in row">{{ value }}</td>
 				</tr>
 			</tbody>
@@ -30,19 +29,35 @@
 
 <script>
 
-	const employees = `[{"first_name":"Nikaniki","last_name":"Ales","gender":"Female","email":"nales0@flavors.me","job_title":"Research Associate"}, {"first_name":"Deanne","last_name":"Sambath","gender":"Male","email":"dsambath1@unblog.fr","job_title":"Software Test Engineer II"}, {"first_name":"Brunhilde","last_name":"Gagin","gender":"Female","email":"bgagin2@telegraph.co.uk","job_title":"Clinical Specialist"}, {"first_name":"Katie","last_name":"Cowp","gender":"Male","email":"kcowp3@printfriendly.com","job_title":"Executive Secretary"}, {"first_name":"Jeremy","last_name":"McDiarmid","gender":"Male","email":"jmcdiarmid4@yale.edu","job_title":"Librarian"}, {"first_name":"Merv","last_name":"Main","gender":"Female","email":"mmain5@live.com","job_title":"Staff Accountant III"}, {"first_name":"Erinn","last_name":"Humber","gender":"Female","email":"ehumber6@simplemachines.org","job_title":"Community Outreach Specialist"}, {"first_name":"Nefen","last_name":"Cardenosa","gender":"Female","email":"ncardenosa7@miibeian.gov.cn","job_title":"Assistant Manager"}, {"first_name":"Chelsae","last_name":"Sentance","gender":"Male","email":"csentance8@java.com","job_title":"Research Associate"}, {"first_name":"Grier","last_name":"Clynter","gender":"Male","email":"gclynter9@samsung.com","job_title":"Web Developer IV"}, {"first_name":"Tonye","last_name":"Trevino","gender":"Female","email":"ttrevinoa@pinterest.com","job_title":"Chief Design Engineer"}, {"first_name":"Glennie","last_name":"Ottawell","gender":"Female","email":"gottawellb@dedecms.com","job_title":"Programmer Analyst II"}, {"first_name":"Rhodie","last_name":"De Giovanni","gender":"Male","email":"rdegiovannic@tripod.com","job_title":"Dental Hygienist"}, {"first_name":"Blithe","last_name":"Bassam","gender":"Male","email":"bbassamd@omniture.com","job_title":"Account Executive"}, {"first_name":"Zelig","last_name":"Woolen","gender":"Female","email":"zwoolene@arizona.edu","job_title":"Account Executive"}, {"first_name":"Maximilien","last_name":"Purvis","gender":"Female","email":"mpurvisf@tripadvisor.com","job_title":"Teacher"}, {"first_name":"Jerrylee","last_name":"Graffham","gender":"Male","email":"jgraffhamg@scribd.com","job_title":"Information Systems Manager"}, {"first_name":"Ernest","last_name":"Eaglesham","gender":"Male","email":"eeagleshamh@hatena.ne.jp","job_title":"Software Engineer I"}, {"first_name":"Robinson","last_name":"Parmiter","gender":"Female","email":"rparmiteri@zimbio.com","job_title":"Junior Executive"}, {"first_name":"Hasty","last_name":"MacTeague","gender":"Female","email":"hmacteaguej@techcrunch.com","job_title":"Recruiter"}, {"first_name":"Cam","last_name":"Scrogges","gender":"Female","email":"cscroggesk@flavors.me","job_title":"Nurse"}, {"first_name":"Dallas","last_name":"Joseph","gender":"Male","email":"djosephl@nature.com","job_title":"Structural Engineer"}, {"first_name":"Morie","last_name":"Alkins","gender":"Female","email":"malkinsm@mac.com","job_title":"Sales Representative"}, {"first_name":"Kesley","last_name":"Morland","gender":"Female","email":"kmorlandn@upenn.edu","job_title":"Web Designer II"}, {"first_name":"Norean","last_name":"Geraudel","gender":"Male","email":"ngeraudelo@csmonitor.com","job_title":"Data Coordiator"}]`;
+	const employees = `[{"first_name":"Dur","last_name":"Scarbarrow","gender":"Genderfluid","job_title":"Professor"},
+{"first_name":"Sarajane","last_name":"Fice","gender":"Bigender","job_title":"Quality Engineer"},
+{"first_name":"Gaspard","last_name":"Beels","gender":"Bigender","job_title":"Technical Writer"},
+{"first_name":"Godard","last_name":"Jolland","gender":"Genderqueer","job_title":"Web Developer III"},
+{"first_name":"Noach","last_name":"Crotty","gender":"Agender","job_title":"Assistant Manager"},
+{"first_name":"Yard","last_name":"Silverman","gender":"Polygender","job_title":"Financial Analyst"},
+{"first_name":"Rosalia","last_name":"Escala","gender":"Agender","job_title":"Environmental Tech"},
+{"first_name":"Eddy","last_name":"Parish","gender":"Genderfluid","job_title":"Actuary"},
+{"first_name":"Kaleb","last_name":"Shemmin","gender":"Male","job_title":"Senior Cost Accountant"},
+{"first_name":"Gideon","last_name":"Cullity","gender":"Bigender","job_title":"Assistant Professor"},
+{"first_name":"Skyler","last_name":"Gayther","gender":"Female","job_title":"Civil Engineer"},
+{"first_name":"Jason","last_name":"Durbann","gender":"Agender","job_title":"Software Test Engineer I"},
+{"first_name":"Ninetta","last_name":"Kippie","gender":"Non-binary","job_title":"Senior Sales Associate"},
+{"first_name":"Alix","last_name":"Belton","gender":"Agender","job_title":"Help Desk Technician"},
+{"first_name":"Luci","last_name":"Levee","gender":"Genderfluid","job_title":"Editor"}]`;
 
 	export default {
 		data() {
 			return {
 				sort: {
-					key: 'first_name',
-					order: 'ascending',
-					currentFilter: "None",
+					key: "first_name",
+					order: "ascending",
+					currentSort: "None",
+					ascending: true,
 				},
+
 				content:{
 					array: JSON.parse(employees),
-					categories: [{string: "First Name", key: "first_name"}, {string: "Last Name", key: "last_name"} , {string: "Gender", key: "gender"}, {string: "Email", key: "email"}, {string: "Job Title", key: "job_title"}],
+					categories: [{string: "First Name", key: "first_name"}, {string: "Last Name", key: "last_name"} , {string: "Gender", key: "gender"}, {string: "Job Title", key: "job_title"}],
 				},
 			};
 		},
@@ -62,7 +77,7 @@
 		computed: {
 			alphabeticalSort() {
 				const key = this.sort.key;
-				const orderValue = this.sort.order === 'ascending' ? 1 : -1;
+				const orderValue = this.sort.order === "ascending" ? 1 : -1;
 
 				function compareFunction(a, b) {					
 					if (a[key] > b[key]) {
@@ -79,7 +94,7 @@
 
 			naturalSort() {
 				const key = this.sort.key;
-				const orderValue = this.sort.order === 'ascending' ? 1 : -1;
+				const orderValue = this.sort.order === "ascending" ? 1 : -1;
 
 				function compareFunction(a, b) {
 					a = a[key].toString();
@@ -94,13 +109,14 @@
 
 		methods: {
 			sortBy(key, filterName) {
-				this.sort.currentFilter = filterName
+				this.sort.currentSort = filterName
 				this.sort.key = key;
 				this.$router.push({ query: { ...this.$route.query, sort: this.sort.key } })
 			},
 
 			toggleSortOrder() {
-				this.sort.order = this.sort.order === 'ascending' ? 'descending' : 'ascending';
+				this.sort.order = this.sort.order === "ascending" ? "descending" : "ascending";
+				this.sort.ascending = this.sort.ascending === false ? true : false;
 				this.$router.push({ query: { ...this.$route.query, order: this.sort.order } })
 			},
 		},
@@ -116,13 +132,15 @@
 		height: 100%;
 		width: 100%;
 		overflow-y: scroll;
+		font-size: 16px;
 	}
 
-	.tableContainer{
+	.mainContainer__tableContainer {
 		display: flex;
 		width: 100%;
 		height: 100%;
 		justify-content: center;
+		overflow-x: scroll;
 	}
 
 	.tableContainer__employeeTable {
@@ -131,10 +149,9 @@
 		text-align: center;
 		border-spacing: 0;
 		border-collapse: separate;
-		
 	}
 
-	.tableContainer__employeeTable__head{
+	.employeeTable__head {
 		height: 50px;
 		width: 100%;
 		background: #81b29a;
@@ -142,41 +159,37 @@
 		border-radius: 10px;
 	}
 
-	.employeeTable__body__row {
+	.body__row {
 		height: 40px;
 		background: #f4f1de;
 	}
 
-	.tableContainer__employeeTable__body tr:nth-child(odd) {
+	.employeeTable__body tr:nth-child(odd) {
 		background: #f2cc8f;
 	}
 
-	.employeeTable__head__item:first-child {
+	.head__item:first-child {
 		border-radius: 10px 0 0 0;
 	}
 
-	.employeeTable__head__item:last-child {
+	.head__item:last-child {
 		border-radius: 0 10px 0  0;
 	}
 
-	.tableContainer__employeeTable__body tr:last-child td:last-child {
+	.employeeTable__body tr:last-child td:last-child {
 		border-radius: 0 0 10px 0;
 	}
 
-	.tableContainer__employeeTable__body tr:last-child td:first-child {
+	.employeeTable__body tr:last-child td:first-child {
 		border-radius: 0 0 0 10px;
 	}
 
-	.controlPanel {
+	.mainContainer__controlPanel {
 		width: 100%;
 		padding: 0 0 20px 0;
 	}
-
-	.dropdown {
-		font-size: 14px;
-	}
 	
-	.dropdown__list{
+	.dropdown__list {
 		display: flex;
 		align-items: center;
 		width: 100%;
@@ -185,13 +198,13 @@
 		background: #f4f1de;
 	}
 
-	.dropdown__list img{
+	.dropdown__list img {
 		padding: 10px;
 		height: 40px;
 		width: auto;
 	}
 
-	.dropdown__list__item {
+	.list__category {
 		display: flex;
 		align-items: center;
 		width: 100%;
@@ -200,15 +213,103 @@
 		cursor: pointer;
 	}
 
-	.dropdown__list__item a{
+	.list__category a {
 		width: 100%;
 		height: 100%;
 		display: block;
 		user-select: none;
 		padding: 0.5rem;
 	}
-	.dropdown__list__item:hover{
+	.list__category:hover {
 		background: #81b29a;
 		border-radius: 10px;
+	}
+
+	/* Utility */
+
+	.flip-axis-y {
+		transform: scaleY(-1);
+	}
+	
+
+	/* Media Query */
+
+			/* ----------- iPhone 5 ----------- */
+	@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		#mainContainer {
+			font-size: 8px;
+		}
+
+		.employeeTable__head {
+			font-size: 8px;
+		}
+
+		.employeeTable__body {
+			font-size: 8px;
+		}
+	}
+
+   /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+   /* Portrait */
+   @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		#mainContainer {
+			font-size: 9px;
+		}
+
+		.employeeTable__head {
+			font-size: 9px;
+		}
+
+		.employeeTable__body {
+			font-size: 9px;
+		}
+	}
+
+   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
+   /* Portrait */
+   @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+		#mainContainer {
+			font-size: 10px;
+		}
+
+		.employeeTable__head {
+			font-size: 10px;
+		}
+
+		.employeeTable__body {
+			font-size: 10px;
+		}
+   }
+
+   /* ----------- iPhone X ----------- */
+	/* Portrait */
+   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+		#mainContainer {
+			font-size: 12px;
+		}
+
+		.employeeTable__head {
+			font-size: 12px;
+		}
+
+		.employeeTable__body {
+			font-size: 12px;
+		}
+	}
+
+	/* ----------- iPad Pro ----------- */
+	/* Portrait */
+   @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		#mainContainer {
+			font-size: 30px;
+		}
+
+		.employeeTable__head {
+			font-size: 30px;
+		}
+
+		.employeeTable__body {
+			font-size: 30px;
+		}
 	}
 </style>

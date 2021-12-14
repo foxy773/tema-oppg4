@@ -1,17 +1,16 @@
 <template>
   <section class="quizContainer">
 
-    <!-- Showes the current and total questions. -->
-    <div class="quizContainer__status" v-if="!this.resultsTime">
+    <!-- Shows the current and total questions. -->
+    <div class="quizContainer__status--questions" v-if="!this.resultsTime">
       <h2>Questions: {{ questionIndex + 1 }}/{{ totalQuestions }}</h2>
     </div>
 
-    <!-- Shows your result if you have answered all the questions. -->
-    <div class="quizContainer__status" v-else>
+    <div class="quizContainer__status--results" v-else>
       <h2>Your Results</h2>
+      <h3>Your score: {{totalCorrectAnswers}}/{{ answered.length }}</h3>
     </div>
 
-    <!-- --''-- -->
     <div class="quizContainer__question" v-if="!this.resultsTime">
       <h2>{{ currentQuestion.question }}</h2>
     </div>
@@ -21,16 +20,16 @@
       <button class="answers__options" @click="nextQuestion(answer)" v-for="(answer, index) in currentQuestion.answers">{{ answer.answer }}</button>
     </div>
 
-    <!-- Showes an correct or wrong image for each answered question, and a retry button at the end that resets the quiz. -->
+    <!-- Shows an correct or wrong image for each answered question, and a retry button at the end that resets the quiz. -->
     <div class="quizContainer__results" v-else>
       <div v-for="(answer, index) in answered">
         <img src="./../../public/assets/quiz-app/wrong.svg" alt="" v-if="answer.wrong" />
         <img src="./../../public/assets/quiz-app/right.svg" alt="" v-else />
         <h3>{{ answer.answer }}</h3>
       </div>
-      
       <button @click="resetQuiz()">Retry</button>
     </div>
+
   </section>
 </template>
 
@@ -41,6 +40,7 @@ export default {
       questionIndex: 0,     // The current index in the "questions" array that is displayed.
       answered: [],         // This is where all answers to all questions is getting stores to later be used to display a score.
       resultsTime: false,   // A boolean used to display the final results if the state is true.
+      correctAnswers: 0,
       questions: [          // The array that stores all the questions and possible answers for each question, as well as whom of them is the correct one.
         {
           question: "How many days are there in a year?", // Question being displayed for the user to answer to.
@@ -126,8 +126,8 @@ export default {
           question: "Who painted the Mona Lisa?",
           answers: [
             { answer: "Vincent van Gogh", wrong: true },
-            { answer: "Leonardo DiCaprio", wrong: false },
-            { answer: "Leonardo da Vinci", wrong: true },
+            { answer: "Leonardo DiCaprio", wrong: true },
+            { answer: "Leonardo da Vinci", wrong: false },
             { answer: "Vincent dan Gogh", wrong: true },
           ],
         },
@@ -146,11 +146,17 @@ export default {
     currentQuestion() {
       return this.questions[this.questionIndex];
     },
+
+    totalCorrectAnswers() {
+      let correctAnswers = this.answered.filter((answer) => answer.wrong === false)
+      return correctAnswers.length
+    },
+
   },
 
   methods: {
 
-    // determines if there are any questions left to be answered, if there are, the "questionIndex" that determines
+    // Determines if there are any questions left to be answered, if there are, the "questionIndex" that determines
     // current question being shown will be iterated by 1. If there are not any more questions, resultsTime that
     // determines when the total score will be shown will be switched from false to true.
     nextQuestion(answer) {
@@ -261,7 +267,12 @@ export default {
   padding: 0.5rem;
 }
 
-.quizContainer__status {
+.quizContainer__status--questions {
+  color: white;
+  padding: 0 0 1rem 0;
+}
+
+.quizContainer__status--results {
   color: white;
   padding: 0 0 1rem 0;
 }

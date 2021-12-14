@@ -1,11 +1,10 @@
 <template>
 	<div class="hamburger" @click="toggleMenu()">
 		<img class="hamburger__image" src="./../../public/assets/header/hamburger-menu.svg" alt="">
-		<nav :class='[menuOpen ? "open" : "close", "hamburger__menu"]'>
+		<nav :class="[menuOpen ? 'open' : 'close', 'hamburger__menu']">
         	<ul class="menu__list">
 
                 <li class="list__item" v-for="link in navigation">
-					<!--<a class="item__link" :href="`${link.pageLink}`">{{ link.pageName }}</a>-->
 						<router-link class="item__link" :to="`${link.pageLink}`">{{ link.pageName }}</router-link>
 					</li>
             </ul>	
@@ -42,8 +41,6 @@ export default {
 	align-self: center;
 	width: 40px;
 	height: auto;
-	height: auto;
-	position: absolute;
 	cursor: pointer;
 }
 
@@ -74,7 +71,6 @@ export default {
 	width: 100%;
 	text-decoration: none;
 	display: inline-block;
-
 	color: black;
 	padding: 0.4rem 0;
 }
@@ -96,4 +92,5 @@ export default {
 	pointer-events: none;
 	opacity: 0;
 }
+
 </style>

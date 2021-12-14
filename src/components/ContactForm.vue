@@ -185,8 +185,9 @@ export default {
         width: 100%;
         margin-bottom: 4%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: space-between;
-        align-items: flex-end;
     }
 
     .contact-form__order-menu {
