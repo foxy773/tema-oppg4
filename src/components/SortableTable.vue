@@ -109,7 +109,7 @@
 		height: 100%;
 		width: 100%;
 		overflow-y: scroll;
-		font-size: 30px;
+		font-size: 18px;
 	}
 
 	.mainContainer__tableContainer {
@@ -134,13 +134,13 @@
 		background: #81b29a;
 		color: white;
 		border-radius: 10px;
-		font-size: 30px;
+		font-size: 18px;
 	}
 
 	.body__row {
 		height: 40px;
 		background: #f4f1de;
-		font-size: 20px;
+		font-size: 16px;
 	}
 
 	.employeeTable__body tr:nth-child(odd) {
@@ -216,6 +216,21 @@
   /* ----------- Small phone ----------- */
   @media only screen and (min-device-width: 300px) and (max-device-width: 425px) {
    .mainContainer {
+   	font-size: 10px;
+   }
+
+	.employeeTable__head {
+      font-size: 10px;
+   }
+
+   .body__row {
+      font-size: 9px;
+   }
+}
+
+  /* ----------- Big phone ----------- */
+  @media only screen and (min-device-width: 425px) and (max-device-width: 800px) {
+   .mainContainer {
    	font-size: 14px;
    }
 
@@ -226,10 +241,10 @@
    .body__row {
       font-size: 12px;
    }
-}
+  }
 
-  /* ----------- Big phone ----------- */
-  @media only screen and (min-device-width: 425px) and (max-device-width: 800px) {
+  /* ----------- Tablet ----------- */
+	@media only screen and (min-device-width: 800px) and (max-device-width: 1400px) {
    .mainContainer {
    	font-size: 16px;
    }
@@ -240,21 +255,6 @@
 
    .body__row {
       font-size: 14px;
-   }
-  }
-
-  /* ----------- Tablet ----------- */
-	@media only screen and (min-device-width: 800px) and (max-device-width: 1400px) {
-   .mainContainer {
-   	font-size: 24px;
-   }
-
-	.employeeTable__head {
-      font-size: 24px;
-   }
-
-   .body__row {
-      font-size: 20px;
    }
   }
 </style>
