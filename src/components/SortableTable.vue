@@ -1,49 +1,35 @@
 <template>
-	<div class="mainContainer" id="mainContainer">
+	<div class="mainContainer">
 		<div class="mainContainer__controlpanel">
 			<a>Sort: {{ sort.currentSort }} ({{ sort.order.toUpperCase() }})</a>
 		<div class="mainContainer__dropdown">
 			<ul class="dropdown__list">
-			<li class="list__category" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
-				<img @click="toggleSortOrder" src="./../../public/assets/sortableTable/down-arrow.svg" alt="" :class="`${sort.ascending ? 'flip-axis-y' : ''}`">
+				<li class="list__category" v-for="category in content.categories"><a @click="sortBy(`${category.key}`, category.string)">{{ category.string }}</a></li>
+					<img @click="toggleSortOrder" src="./../../public/assets/sortableTable/down-arrow.svg" alt="" :class="`${sort.ascending ? 'flip-axis-y' : ''}`">
 			</ul>
 		</div>
 		</div>
-	<div class="mainContainer__tableContainer">
-		<table class="tableContainer__employeeTable">
-			<thead class="employeeTable__head">
-				<tr>
-					<th class="head__item" v-for="category in content.categories">{{ category.string }}</th>
-				</tr>
-			</thead>
+		<div class="mainContainer__tableContainer">
+			<table class="tableContainer__employeeTable">
+				<thead class="employeeTable__head">
+					<tr>
+						<th class="head__item" v-for="category in content.categories">{{ category.string }}</th>
+					</tr>
+				</thead>
 
-			<tbody class="employeeTable__body">
-				<tr class="body__row" v-for="row in naturalSort">
-					<td v-for="value in row">{{ value }}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+				<tbody class="employeeTable__body">
+					<tr class="body__row" v-for="row in alphabeticalSort">
+						<td v-for="value in row">{{ value }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </template>
 
 <script>
 
-	const employees = `[{"first_name":"Dur","last_name":"Scarbarrow","gender":"Genderfluid","job_title":"Professor"},
-{"first_name":"Sarajane","last_name":"Fice","gender":"Bigender","job_title":"Quality Engineer"},
-{"first_name":"Gaspard","last_name":"Beels","gender":"Bigender","job_title":"Technical Writer"},
-{"first_name":"Godard","last_name":"Jolland","gender":"Genderqueer","job_title":"Web Developer III"},
-{"first_name":"Noach","last_name":"Crotty","gender":"Agender","job_title":"Assistant Manager"},
-{"first_name":"Yard","last_name":"Silverman","gender":"Polygender","job_title":"Financial Analyst"},
-{"first_name":"Rosalia","last_name":"Escala","gender":"Agender","job_title":"Environmental Tech"},
-{"first_name":"Eddy","last_name":"Parish","gender":"Genderfluid","job_title":"Actuary"},
-{"first_name":"Kaleb","last_name":"Shemmin","gender":"Male","job_title":"Senior Cost Accountant"},
-{"first_name":"Gideon","last_name":"Cullity","gender":"Bigender","job_title":"Assistant Professor"},
-{"first_name":"Skyler","last_name":"Gayther","gender":"Female","job_title":"Civil Engineer"},
-{"first_name":"Jason","last_name":"Durbann","gender":"Agender","job_title":"Software Test Engineer I"},
-{"first_name":"Ninetta","last_name":"Kippie","gender":"Non-binary","job_title":"Senior Sales Associate"},
-{"first_name":"Alix","last_name":"Belton","gender":"Agender","job_title":"Help Desk Technician"},
-{"first_name":"Luci","last_name":"Levee","gender":"Genderfluid","job_title":"Editor"}]`;
+	const employees = `[{"first_name":"Dur","last_name":"Scarbarrow","gender":"Genderfluid","job_title":"Professor"}, {"first_name":"Sarajane","last_name":"Fice","gender":"Bigender","job_title":"Quality Engineer"}, {"first_name":"Gaspard","last_name":"Beels","gender":"Bigender","job_title":"Technical Writer"}, {"first_name":"Godard","last_name":"Jolland","gender":"Genderqueer","job_title":"Web Developer III"}, {"first_name":"Noach","last_name":"Crotty","gender":"Agender","job_title":"Assistant Manager"}, {"first_name":"Yard","last_name":"Silverman","gender":"Polygender","job_title":"Financial Analyst"}, {"first_name":"Rosalia","last_name":"Escala","gender":"Agender","job_title":"Environmental Tech"}, {"first_name":"Eddy","last_name":"Parish","gender":"Genderfluid","job_title":"Actuary"}, {"first_name":"Kaleb","last_name":"Shemmin","gender":"Male","job_title":"Senior Cost Accountant"}, {"first_name":"Gideon","last_name":"Cullity","gender":"Bigender","job_title":"Assistant Professor"}, {"first_name":"Skyler","last_name":"Gayther","gender":"Female","job_title":"Civil Engineer"}, {"first_name":"Jason","last_name":"Durbann","gender":"Agender","job_title":"Software Test Engineer I"}, {"first_name":"Ninetta","last_name":"Kippie","gender":"Non-binary","job_title":"Senior Sales Associate"}, {"first_name":"Alix","last_name":"Belton","gender":"Agender","job_title":"Help Desk Technician"}, {"first_name":"Luci","last_name":"Levee","gender":"Genderfluid","job_title":"Editor"}]`;
 
 	export default {
 		data() {
@@ -62,6 +48,7 @@
 			};
 		},
 
+		// At the start when the website loads it takes variables from "sort" and "order" in the url and uses them to sort and order the table.
 		created() {
 			const query = this.$route.query;
 
@@ -75,11 +62,14 @@
 		},
 
 		computed: {
+
+			// This function sorts everything alphabetical from A -> Z or Z -> A by going through every letter in every word and compares
+			// by who are the alphabetical or numerical closest to A or 0. Eksample ABC > BAC.
 			alphabeticalSort() {
 				const key = this.sort.key;
-				const orderValue = this.sort.order === "ascending" ? 1 : -1;
+				const orderValue = this.sort.order === "ascending" ? 1 : -1; // Ordervalue is 1 if this.sort.order is ascending, if not Ordervalue is -1.
 
-				function compareFunction(a, b) {					
+				function compareFunction(a, b) {
 					if (a[key] > b[key]) {
 						return 1;
 					} else if (a[key] < b[key]) {
@@ -88,32 +78,19 @@
 						return 0
 					}
 				}
-
-				return this.content.array.sort((a, b) => compareFunction(a, b) * orderValue);
-			},
-
-			naturalSort() {
-				const key = this.sort.key;
-				const orderValue = this.sort.order === "ascending" ? 1 : -1;
-
-				function compareFunction(a, b) {
-					a = a[key].toString();
-					b = b[key].toString();
-
-					return a.localeCompare(b, undefined, { numeric: true });
-				}
-
-				return this.content.array.sort((a, b) => compareFunction(a, b) * orderValue);
+				return this.content.array.sort((a, b) => compareFunction(a, b) * orderValue); // Sorts through content.array with the compareFunction and multiplies is with orderValue for ascending or decending the order.
 			},
 		},
 
 		methods: {
+
+			// Takes in key and filterName from categories array and pushes them to the url, example "/sortable-table?sort=last_name"
 			sortBy(key, filterName) {
 				this.sort.currentSort = filterName
 				this.sort.key = key;
 				this.$router.push({ query: { ...this.$route.query, sort: this.sort.key } })
 			},
-
+			// Switches between ascending and descending when function is called (in this case the arrow) and pushes the change to the url, example "/sortable-table?order=descending"
 			toggleSortOrder() {
 				this.sort.order = this.sort.order === "ascending" ? "descending" : "ascending";
 				this.sort.ascending = this.sort.ascending === false ? true : false;
@@ -132,7 +109,7 @@
 		height: 100%;
 		width: 100%;
 		overflow-y: scroll;
-		font-size: 16px;
+		font-size: 30px;
 	}
 
 	.mainContainer__tableContainer {
@@ -157,11 +134,13 @@
 		background: #81b29a;
 		color: white;
 		border-radius: 10px;
+		font-size: 30px;
 	}
 
 	.body__row {
 		height: 40px;
 		background: #f4f1de;
+		font-size: 20px;
 	}
 
 	.employeeTable__body tr:nth-child(odd) {
@@ -232,84 +211,50 @@
 	}
 	
 
-	/* Media Query */
+  /* Media Query */
 
-			/* ----------- iPhone 5 ----------- */
-	@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 8px;
-		}
-
-		.employeeTable__head {
-			font-size: 8px;
-		}
-
-		.employeeTable__body {
-			font-size: 8px;
-		}
-	}
-
-   /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
-   /* Portrait */
-   @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 9px;
-		}
-
-		.employeeTable__head {
-			font-size: 9px;
-		}
-
-		.employeeTable__body {
-			font-size: 9px;
-		}
-	}
-
-   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
-   /* Portrait */
-   @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 10px;
-		}
-
-		.employeeTable__head {
-			font-size: 10px;
-		}
-
-		.employeeTable__body {
-			font-size: 10px;
-		}
+  /* ----------- Small phone ----------- */
+  @media only screen and (min-device-width: 300px) and (max-device-width: 425px) {
+   .mainContainer {
+   	font-size: 14px;
    }
 
-   /* ----------- iPhone X ----------- */
-	/* Portrait */
-   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 12px;
-		}
+	.employeeTable__head {
+      font-size: 14px;
+   }
 
-		.employeeTable__head {
-			font-size: 12px;
-		}
+   .body__row {
+      font-size: 12px;
+   }
+}
 
-		.employeeTable__body {
-			font-size: 12px;
-		}
-	}
+  /* ----------- Big phone ----------- */
+  @media only screen and (min-device-width: 425px) and (max-device-width: 800px) {
+   .mainContainer {
+   	font-size: 16px;
+   }
 
-	/* ----------- iPad Pro ----------- */
-	/* Portrait */
-   @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 30px;
-		}
+	.employeeTable__head {
+      font-size: 16px;
+   }
 
-		.employeeTable__head {
-			font-size: 30px;
-		}
+   .body__row {
+      font-size: 14px;
+   }
+  }
 
-		.employeeTable__body {
-			font-size: 30px;
-		}
-	}
+  /* ----------- Tablet ----------- */
+	@media only screen and (min-device-width: 800px) and (max-device-width: 1400px) {
+   .mainContainer {
+   	font-size: 24px;
+   }
+
+	.employeeTable__head {
+      font-size: 24px;
+   }
+
+   .body__row {
+      font-size: 20px;
+   }
+  }
 </style>

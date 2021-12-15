@@ -20,6 +20,7 @@ export default {
 			navigation: [{ pageName: "Home", pageLink: "/" }, { pageName: "Contact Form", pageLink: "/contact-form" }, { pageName: "QuizApp", pageLink: "/quizapp" }, { pageName: "Slideshow", pageLink: "/slideshow" }, { pageName: "Sortable Table", pageLink: "/sortable-table" }, { pageName: "TodoApp", pageLink: "/to-do" }],
 		};
 	},
+	
 	methods: {
 		toggleMenu() {
 			this.menuOpen = !this.menuOpen

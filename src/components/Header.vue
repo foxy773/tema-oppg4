@@ -31,136 +31,108 @@ export default {
 
 
 <style>
-/*Header*/
-.header {
-  height: 125px;
-  width: 100vw;
-  background: white;
-  border-bottom: solid black 1px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /*Header*/
+
+  .header {
+    height: 125px;
+    width: 100vw;
+    background: white;
+    border-bottom: solid black 1px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header__logowrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__navContainer {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .logowrapper__logo {
+    display: flex;
+    height: auto;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    justify-content: center;
+    margin: 0 40px;
+  }
+
+  .logowrapper__subtext {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .subtext__catchfrase {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  .subtext__version {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+/* Media Query */
+
+  /* ----------- Small phone ----------- */
+  @media only screen and (min-device-width: 300px) and (max-device-width: 425px) {
+  .logowrapper__logo {
+    width: 150px;
+    margin: 0 10px;
+  }
+
+  .logowrapper__logo > img{
+    width: 150px;
+  }
+
+  .logowrapper__subtext {
+    font-size: 0.4rem;
+    text-transform: uppercase;
+    width: 90px;
+  }
+
+  .subtext__version {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+  }
 }
 
-.header__logowrapper {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
+  /* ----------- Big phone ----------- */
+  @media only screen and (min-device-width: 425px) and (max-device-width: 800px) {
+    .logowrapper__logo {
+      width: 250px;
+      margin: 0 25px;
+    }
 
-.header__navContainer {
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
+    .logowrapper__logo > img{
+      width: 250px;
+    }
+  }
 
-.logowrapper__logo {
-  display: flex;
-  height: auto;
-  font-weight: 900;
-  font-style: italic;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  justify-content: center;
-  margin: 0 40px;
-}
-
-.logowrapper__subtext {
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.subtext__catchfrase {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-}
-
-.subtext__version {
-  font-weight: 900;
-  font-style: italic;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-
-	/* Media Query */
-
-			/* ----------- iPhone 5 ----------- */
-	@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 8px;
-		}
-
-		.employeeTable__head {
-			font-size: 8px;
-		}
-
-		.employeeTable__body {
-			font-size: 8px;
-		}
-	}
-
-   /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
-   /* Portrait */
-   @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 9px;
-		}
-
-		.employeeTable__head {
-			font-size: 9px;
-		}
-
-		.employeeTable__body {
-			font-size: 9px;
-		}
-	}
-
-   /* ----------- iPhone 6+, 7+ and 8+ ----------- */
-   /* Portrait */
-   @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 10px;
-		}
-
-		.employeeTable__head {
-			font-size: 10px;
-		}
-
-		.employeeTable__body {
-			font-size: 10px;
-		}
-   }
-
-   /* ----------- iPhone X ----------- */
-	/* Portrait */
-   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-		#mainContainer {
-			font-size: 12px;
-		}
-
-		.employeeTable__head {
-			font-size: 12px;
-		}
-
-		.employeeTable__body {
-			font-size: 12px;
-		}
-	}
-
-	/* ----------- iPad Pro ----------- */
-	/* Portrait */
-   @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-	  .logowrapper__logo {
+  /* ----------- Tablet ----------- */
+  @media only screen and (min-device-width: 800px) and (max-device-width: 1400px) {
+    .logowrapper__logo {
       width: 300px;
       margin: 0 30px;
     }
 
     .logowrapper__logo > img{
       width: 300px;
-      background: blue;
     }
-	}
-
+  }
 </style>

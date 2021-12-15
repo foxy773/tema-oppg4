@@ -73,17 +73,20 @@ export default {
                 city: null,
                 zipCode: null,
                 email: null,
+
                 customVariation: {
                     thisSize: null,
                     thisTaste: null,
                     thisVariation: null,
                 },
             },
+
             content: {
                 sizes: ["XS", "S", "M", "L", "XL", "JUMBO", "MANDINGO"],
                 tastes: ["Neutral", "Strawberry", "Melon", "Cola", "Chocolate", "Banana", "Mango"],
                 variation: ["Extra sensitive", "Ultra thin", "Snug fit", "Comfy fit", "Ribbed & Dotted"]
             },
+            
             order:[],
         }
     },
