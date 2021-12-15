@@ -25,7 +25,7 @@
                     <div class="contact-form__menu-title">Size</div>
 
                     <!-- Droplist that loops the strings in content[index] as options + v-model the 'customVariation' object.  -->
-                    <select v-model="form.customVariation.thisSize">
+                    <select class="contact-form__select" v-model="form.customVariation.thisSize">
                         <option disabled value="Select variation">Select size</option>
                         <option v-for="sizes in content.sizes"> {{ sizes }} </option>
                     </select>
@@ -34,7 +34,7 @@
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Taste</div>
 
-                    <select v-model="form.customVariation.thisTaste">
+                    <select class="contact-form__select" v-model="form.customVariation.thisTaste">
                         <option disabled value="Select variation">Select taste</option>
                         <option v-for="tastes in content.tastes"> {{ tastes }} </option>
                     </select>
@@ -43,7 +43,7 @@
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Variation</div>
 
-                    <select v-model="form.customVariation.thisVariation">
+                    <select class="contact-form__select" v-model="form.customVariation.thisVariation">
                         <option disabled value="Select variation">Select variation</option>
 
                         <option v-for="variation in content.variation"> {{ variation }} </option>
@@ -52,6 +52,9 @@
 
                 <button class="contact-form__add-button" @click="push_order">Add</button>
             </div>
+
+            <button class="contact-form__submit-button" @click="submit_order">Submit order</button>
+
             <div class="contact-form__order-container">
 
                 <!-- Loops the order list as a composition under a label for easy screenreading -->
@@ -63,10 +66,7 @@
                         <button class="contact-form__remove-button" @click="remove_order(index)">Remove</button>
                     </div>
                 </label>
-
             </div>
-            
-            <button class="contact-form__submit-button" @click="submit_order">Submit order</button>
         </div>
     </div>
 </template>
@@ -130,6 +130,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow-y: scroll;
     }
 
     .contact-form__container {
@@ -193,8 +194,8 @@ export default {
         width: 100%;
         margin-bottom: 4%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-end;
         justify-content: space-between;
     }
 
@@ -206,6 +207,11 @@ export default {
 
     .contact-form__menu-title {
         margin-bottom: 3%;
+    }
+
+    .contact-form__select {
+        border-style: none;
+        width: 97%;
     }
 
     .contact-form__add-button {
@@ -229,9 +235,6 @@ export default {
     /* 5.1 Order container */
 
     .contact-form__order-container {
-        max-height: 12%;
-        overflow-y: scroll;
-        margin-bottom: 4%;
         background: white;
         border-radius: 5px;
     }
@@ -258,6 +261,7 @@ export default {
         height: 3em;
         color: white;
         background: #EF233C;
+        margin-bottom: 4%;
         font-size: 0.7rem;
         font-weight: bold;
         text-transform: uppercase;
@@ -269,5 +273,12 @@ export default {
         color: #EF233C;
         background: white;
         transition: 0.2s;
+    }
+
+    @media only screen and (max-device-width: 1400px) {
+        .contact-form__order-assembler{
+            flex-direction: column;
+            align-items: center;
+        }
     }
 </style>
