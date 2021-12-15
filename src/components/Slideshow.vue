@@ -3,6 +3,7 @@
       <div class="slideshow__container">
          <div class="slideshow__controllers">
             <div class="slideshow__index-controller">
+               <!-- Loops a button with a click-event function that navigates to the image with coresponding index as the button.  -->
                <button @click="goToImage(index)" class="Slideshow__index-button" v-for="(image, index) in images" :aria-label="`Go to image ${index + 1}`">
                   <svg width="26" height="15" viewBox="0 0 26 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path d="M8.32 0H26L17.68 15H0L8.32 0Z" fill="#EDEDED"/>
@@ -12,14 +13,17 @@
 
             <div class="slideshow__binary-controller">
                <button @click="previousImage" class="slideshow__previous">previous</button>
+
                <button @click="nextImage" class="slideshow__next">next</button>
             </div>
-
          </div>
+
          <div class="slideshow__images">
             <div class="slideshow__name"> {{ currentImage.name }} </div>
+
             <figure class="slideshow__image">
                <img class="slideshow__img" :src="currentImage.src" :alt="currentImage.name">
+               
                <figcaption class="slideshow__figcaption"> {{ currentImage.caption }} </figcaption>
             </figure>
          </div>

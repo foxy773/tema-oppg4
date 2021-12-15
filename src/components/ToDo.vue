@@ -5,9 +5,12 @@
             <div class="todo__title">Things_due</div>
             <div class="todo__subtitle">utlimate taskmanager</div>
          </div>
+         
          <div class="todo__content">
+            <!-- Two different templates that are used based on the content of 'tasks' list and the objects boolean value of .done. -->
             <template v-if="tasks.length > 0 && showSeparateLists">
                <div class="todo__task">
+                  <!-- Nested component that exports events to functions in this component. -->
                   <ToDoItem
                      @updated-task="storeTasksLocally"
                      @done-task="doneTask"
@@ -17,7 +20,9 @@
                   />
                   <button @click="addTask" class="todo__add-new">Add new +</button>
                </div>
+
                <div class="todo__divider" v-if="doneTasks.length > 0 && pendingTasks.length > 0" >Completed</div>
+
                <div class="todo__task">
                   <ToDoItem
                      @updated-task="storeTasksLocally"

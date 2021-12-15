@@ -1,6 +1,7 @@
 <template>
    <div class="task">
-
+      
+      <!-- Toggles 'task__content--done' class based on the boolean value of task.done -->
       <div :class="`task__content ${task.done ? 'task__content--done' : ''}`">
             <input :ref="task.id" class="task__input" type="text" placeholder="New task" v-model="task.text">
             <button class="task__done" aria-label="Done" @click="emitDone"><ToDoIcon /></button>

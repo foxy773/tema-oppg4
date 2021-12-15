@@ -3,10 +3,13 @@
         <div class="contact-form__container">
             <div class="contact-form__header">
                 <div class="contact-form__title">DONGyourSLONG.ru</div>
+
                 <div class="contact-form__info">Order your condoms anonymously</div>
             </div>
+
             <div class="contact-form__form">
                 <input class="contact-form__input" type="text" placeholder="Name" form="name" v-model="form.name">
+
                 <input class="contact-form__input" type="text" placeholder="Address" form="address" v-model="form.address">
 
                 <div class="contact-form__under-element">
@@ -16,16 +19,18 @@
 
                 <input class="contact-form__input" type="email" placeholder="Email" form="email" v-model="form.email">
             </div>
+
             <div class="contact-form__order-assembler">
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Size</div>
 
+                    <!-- Droplist that loops the strings in content[index] as options + v-model the 'customVariation' object.  -->
                     <select v-model="form.customVariation.thisSize">
                         <option disabled value="Select variation">Select size</option>
                         <option v-for="sizes in content.sizes"> {{ sizes }} </option>
                     </select>
-
                 </div>
+
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Taste</div>
 
@@ -33,21 +38,23 @@
                         <option disabled value="Select variation">Select taste</option>
                         <option v-for="tastes in content.tastes"> {{ tastes }} </option>
                     </select>
-
                 </div>
+
                 <div class="contact-form__order-menu">
                     <div class="contact-form__menu-title">Variation</div>
 
                     <select v-model="form.customVariation.thisVariation">
                         <option disabled value="Select variation">Select variation</option>
+
                         <option v-for="variation in content.variation"> {{ variation }} </option>
                     </select>
-
                 </div>
+
                 <button class="contact-form__add-button" @click="push_order">Add</button>
             </div>
             <div class="contact-form__order-container">
 
+                <!-- Loops the order list as a composition under a label for easy screenreading -->
                 <label v-for="(balloon, index) in order">
                     <div class="contact-form__order-item">
                         <div> {{ balloon.thisSize }} </div>
@@ -58,6 +65,7 @@
                 </label>
 
             </div>
+            
             <button class="contact-form__submit-button" @click="submit_order">Submit order</button>
         </div>
     </div>
@@ -108,7 +116,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>
@@ -131,8 +138,6 @@ export default {
         max-width: 600px;
         padding: 4% 0% 4% 0%;
     }
-
-
 
     /* 2.1 Header */
 
