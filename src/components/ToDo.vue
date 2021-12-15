@@ -138,6 +138,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow-y: scroll;
    }
 
    .todo__container {
@@ -145,7 +146,6 @@
       width: 80%;
       max-width: 600px;
       padding: 4% 0% 4% 0%;
-      overflow-y: scroll;
    }
 
    .todo__header {
